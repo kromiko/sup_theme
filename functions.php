@@ -1208,12 +1208,61 @@ function do_get_rating_data(){
 	if ($user_id){
 		$pts_arr = get_user_meta($user_id, '_pts', true);
 		if ($pts_arr){
-			$output_pts .= '<table><tr><th><strong>Rank</strong></th><th><strong>PTS</strong></th><th><strong>Date</strong></th></tr>';
+			$output_pts .= '<table><tr><th><strong>Rank</strong></th><th><strong>PTS</strong></th><th><strong>Date</strong></th><th><strong>Edit</strong></th></tr>';
 			foreach ($pts_arr as $pts_values){
 				$output_pts .= '<tr>';
 				foreach ($pts_values as $value){
-					$output_pts .= '<td>' . $value . '</td>';
+					$rank_val = '';
+					if ($value == 1){
+						$rank_val = 'novice';
+						$output_pts .= '<td title="1">' . $rank_val . '</td>';
+					} elseif ($value == 2) {
+						$rank_val = 'neophyte';
+						$output_pts .= '<td title="2">' . $rank_val . '</td>';
+					} elseif ($value == 3) {
+						$rank_val = 'apprentice';
+						$output_pts .= '<td title="3">' . $rank_val . '</td>';
+					} elseif ($value == 4) {
+						$rank_val = '1 - follower';
+						$output_pts .= '<td title="4">' . $rank_val . '</td>';
+					} elseif ($value == 5) {
+						$rank_val = '2 - sophomore';
+						$output_pts .= '<td title="5">' . $rank_val . '</td>';
+					} elseif ($value == 6) {
+						$rank_val = '3 - junior technician';
+						$output_pts .= '<td title="6">' . $rank_val . '</td>';
+					} elseif ($value == 7) {
+						$rank_val = '4 - senior technician';
+						$output_pts .= '<td title="7">' . $rank_val . '</td>';
+					} elseif ($value == 8) {
+						$rank_val = '5 - leading technician';
+						$output_pts .= '<td title="8">' . $rank_val . '</td>';
+					} elseif ($value == 9) {
+						$rank_val = '6 - expert';
+						$output_pts .= '<td title="9">' . $rank_val . '</td>';
+					} elseif ($value == 10) {
+						$rank_val = '7 - guru';
+						$output_pts .= '<td title="10">' . $rank_val . '</td>';
+					} elseif ($value == 11) {
+						$rank_val = '8 - master';
+						$output_pts .= '<td title="11">' . $rank_val . '</td>';
+					} elseif ($value == 12) {
+						$rank_val = '9 - grand master';
+						$output_pts .= '<td title="12">' . $rank_val . '</td>';
+					} elseif ($value == 13) {
+						$rank_val = '10 - the legend';
+						$output_pts .= '<td title="13">' . $rank_val . '</td>';
+					} elseif ($value == 14) {
+						$rank_val = '11 - star technician';
+						$output_pts .= '<td title="14">' . $rank_val . '</td>';
+					} elseif ($value == 15) {
+						$rank_val = '12 - magician';
+						$output_pts .= '<td title="15">' . $rank_val . '</td>';
+					} else {
+						$output_pts .= '<td>' . $value . '</td>';
+					}
 				}
+				$output_pts .= '<td><span class="dashicons dashicons-edit"></span></td>';
 				$output_pts .= '</tr>';
 			}
 			$output_pts .= '</table>';

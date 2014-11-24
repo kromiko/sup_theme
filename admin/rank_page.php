@@ -63,7 +63,25 @@ function rank_menu_admin_output() {
 <h3>Add new PTS/Rank value</h3>
 <p>
 	<label><?php _e("User rank:", 'twentythirteen' ); ?></label>
-	<input type="text" id="<?php echo $cur_rank_field_name; ?>" name="<?php echo $cur_rank_field_name; ?>" value="" size="10">
+	<?php /* ?><input type="text" id="<?php echo $cur_rank_field_name; ?>" name="<?php echo $cur_rank_field_name; ?>" value="" size="10"><?php */ ?>
+	<select id="<?php echo $cur_rank_field_name; ?>" name="<?php echo $cur_rank_field_name; ?>">
+		<option value=""><?php _e("-------------", 'twentythirteen'); ?></option>
+		<option value="1"><?php _e("Novice", 'twentythirteen'); ?></option>
+		<option value="2"><?php _e("Neophyte", 'twentythirteen'); ?></option>
+		<option value="3"><?php _e("Apprentice", 'twentythirteen'); ?></option>
+		<option value="4"><?php _e("1 Follower", 'twentythirteen'); ?></option>
+		<option value="5"><?php _e("2 Sophomore", 'twentythirteen'); ?></option>
+		<option value="6"><?php _e("3 Junior Technician", 'twentythirteen'); ?></option>
+		<option value="7"><?php _e("4 Senior Technician", 'twentythirteen'); ?></option>
+		<option value="8"><?php _e("5 Leading Technician", 'twentythirteen'); ?></option>
+		<option value="9"><?php _e("6 Expert", 'twentythirteen'); ?></option>
+		<option value="10"><?php _e("7 Guru", 'twentythirteen'); ?></option>
+		<option value="11"><?php _e("8 Master", 'twentythirteen'); ?></option>
+		<option value="12"><?php _e("9 Grand-Master", 'twentythirteen'); ?></option>
+		<option value="13"><?php _e("10 The Legend", 'twentythirteen'); ?></option>
+		<option value="14"><?php _e("11 Star Technician", 'twentythirteen'); ?></option>
+		<option value="15"><?php _e("12 Magician", 'twentythirteen'); ?></option>
+	</select>
 	<label><?php _e("User PTS value:", 'twentythirteen' ); ?></label>
 	<input type="text" id="<?php echo $pts_field_name; ?>" name="<?php echo $pts_field_name; ?>" value="" size="10">
 	<label><?php _e("Update date:", 'twentythirteen' ); ?></label>
@@ -140,6 +158,9 @@ table td, table th{
 }
 table th{
 	text-align:center;
+}
+table span.dashicons-edit{
+	cursor:pointer;
 }
 </style>
 <?php
