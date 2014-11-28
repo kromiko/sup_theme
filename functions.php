@@ -854,11 +854,11 @@ function karma_list_results(){
 		$res[$usr_name] = $karma_val;
 	}
 	arsort($res);
-	$output = '<ul>';
+	$output = '<div class="entry-content"><ul>';
 	foreach ($res as $element => $value){
 		$output .= '<li>' . $element . ': ' . $value . '</li>';
 	}
-	$output .= '</ul>';
+	$output .= '</ul></div>';
 	return $output;
 }
 
@@ -1208,9 +1208,9 @@ function do_get_rating_data(){
 	if ($user_id){
 		$pts_arr = get_user_meta($user_id, '_pts', true);
 		if ($pts_arr){
-			$output_pts .= '<table><tr><th><strong>Rank</strong></th><th><strong>PTS</strong></th><th><strong>Date</strong></th><th><strong>Edit</strong></th></tr>';
-			foreach ($pts_arr as $pts_values){
-				$output_pts .= '<tr>';
+			$output_pts .= '<table><tr><th><strong>Rank</strong></th><th><strong>PTS</strong></th><th><strong>Date</strong></th><th><strong>Edit</strong></th><th><strong>Delete</strong></th></tr>';
+			foreach ($pts_arr as $pts_key=>$pts_values){
+				$output_pts .= '<tr id="'. $pts_key .'">';
 				foreach ($pts_values as $value){
 					$rank_val = '';
 					if ($value == 1){
@@ -1262,7 +1262,8 @@ function do_get_rating_data(){
 						$output_pts .= '<td>' . $value . '</td>';
 					}
 				}
-				$output_pts .= '<td><span class="dashicons dashicons-edit"></span></td>';
+				$output_pts .= '<td align="center"><span class="dashicons dashicons-edit"></span></td>';
+				$output_pts .= '<td align="center"><span class="dashicons dashicons-trash"></span></td>';
 				$output_pts .= '</tr>';
 			}
 			$output_pts .= '</table>';
@@ -1274,6 +1275,28 @@ function do_get_rating_data(){
 		} else {
 			$return = array(
 				'message_pts' => 'No Data'
+			);
+		}
+		wp_send_json($return);
+	}
+}
+
+/* ajax action for admin hobbies - remove category */
+add_action( 'wp_ajax_rem_rank', 'do_rem_rank' );
+
+function do_rem_rank(){
+	$rank_arrKey = $_POST['rank_arrKey'];
+	$user_id = $_POST['userID'];
+	if (is_numeric($rank_arrKey)){
+		$get_ranks = get_user_meta($user_id, '_pts', true);
+		unset($get_ranks[$rank_arrKey]);
+		if (update_user_meta($user_id, '_pts', $get_ranks)){
+			$return = array(
+				'message' => 'Value has been removed'
+			);
+		} else {
+			$return = array(
+				'message' => 'Value has not been removed'
 			);
 		}
 		wp_send_json($return);

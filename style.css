@@ -3650,14 +3650,17 @@ p.userhobby{
 .rank {
 	margin:20px 0;
 }
+.label{
+	display:inline-block;
+	background:rgba(0, 0, 0, 0.3);
+	line-height:189px;
+	min-width:155px;
+}
 .rank_value{
-  font-size:40px;
-  padding:0 0 0 20px;
-  position:absolute;
-  top:50%;
-  margin-top:-30px;
   display:inline-block;
-  text-shadow:0 0 6px #666;
+  font-size:40px;
+  padding:0 0 0 15px;
+  position:relative;
 }
 .rank_name{
 	display:inline-block;
@@ -3671,7 +3674,7 @@ p.userhobby{
 }
 .pts_val{
   color:#4c4c4c;
-  font-size:16px;
+  font-size:14px;
   font-weight:bold;
 }
 .twelve, .eleven, .ten, .nine, .eight, .seven, .six, .five, .four, .three, .two, .one, .apprentice, .neophyte, .novice{
@@ -3724,9 +3727,6 @@ p.userhobby{
 .twelve, .eleven .pts-peak{
 	background:#ff0000;
 }
-div .item:nth-child(2){
-  margin-left:130px;
-}
 .item{
 	display:inline-block;
 	margin:0 0 0 20px;
@@ -3734,11 +3734,15 @@ div .item:nth-child(2){
 	position:relative;
 	vertical-align:bottom;
 }
+.item.static{
+	padding-top:12px;
+	padding-bottom:12px;
+}
 .item h5{
 	margin:2px 0 0;
 	text-shadow:-1px 0 #666, 0 1px #666, 1px 0 #666, 0 -1px #666;
-	font-size:16px;
-	line-height:18px;
+	font-size:14px;
+	line-height:14px;
 }
 .rank_avatar {
   border-radius: 5px;
@@ -3847,4 +3851,16 @@ div .item:nth-child(2){
 	margin-bottom:100px;
 	border-radius:0 0 3px 3px;
 	padding:0 3px;
+	vertical-align:top;
+}
+
+.month{
+	border-right:1px dashed #000;
+	display:inline-block;
+	height:189px;
+	vertical-align:top;
+	width:93px;
+}
+.novice .month, .neophyte .month, .apprentice .month, .one .month, .two .month, .three .month, .four .month, .five .month{
+  width:116px;
 }

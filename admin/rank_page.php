@@ -93,6 +93,7 @@ function rank_menu_admin_output() {
 </p>
 
 </form>
+<div id="del_msg"></div>
 <div id="pts_msg">
 	<span class="loader">Loading Data <img src="<?php echo get_template_directory_uri() . '/images/ajax-loader.gif'; ?>" width="16" height="11" alt="loader" /></span>
 	<div></div>
@@ -102,6 +103,7 @@ function rank_menu_admin_output() {
 	jQuery(function() {
 		jQuery( "#datepicker_pts" ).datepicker({dateFormat:"dd.mm.yy"});
 	});
+	
 	jQuery('#users').change(function(){
 		jQuery('#<?php echo $pts_field_name; ?>').val('');
 		var usrID = jQuery('#users').val();
@@ -131,6 +133,29 @@ function rank_menu_admin_output() {
 			jQuery('#pts_msg div').html('');
 		}
 	});
+	
+	jQuery(document).on('click', '.dashicons-trash', function(){
+		var rankValToRemove = jQuery(this).parent().parent().attr("id");
+		var rankToRemove = jQuery(this).parent().parent();
+		var usrID = jQuery('#users').val();
+		jQuery(rankToRemove).remove();
+		
+		var data = {
+			action: 'rem_rank',
+			userID: usrID,
+			rank_arrKey: rankValToRemove
+		}
+		jQuery.ajax({
+			url: ajaxurl,
+			type: "POST",
+			data: data,
+			success: function(msg){
+				if (msg.message){
+					jQuery('#del_msg').html(msg.message).fadeIn(300).delay(2300).fadeOut(300);
+				}
+			}
+		});
+	});
 </script>
 <style>
 span.loader{
@@ -159,8 +184,16 @@ table td, table th{
 table th{
 	text-align:center;
 }
-table span.dashicons-edit{
+table span.dashicons-edit, table span.dashicons-trash{
 	cursor:pointer;
+}
+#del_msg{
+	color:#fff;
+	background:rgba(0, 0, 0, 0.5);
+	display:none;
+	margin:0 0 10px;
+    padding:5px;
+    width:50%;
 }
 </style>
 <?php
