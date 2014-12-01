@@ -39,9 +39,27 @@ get_header(); ?>
 						$latest_date = $cur_view['date'];
 						$last_rank = $cur_view['cur_rank'];
 						$pts_val = $cur_view['pts'];
-						echo '<pre>';
-						print_r($dates_arr);
-						echo '</pre>';
+						
+						$min_date_arr = array();
+						foreach ($user_rank as $key => $value) {
+							if ($value['cur_rank'] == $last_rank){
+								$min_date_arr[$key] = new DateTime($value['date']);
+							}
+						}
+						$min_date_arr_key = array_search( min($min_date_arr), $min_date_arr );
+						$min_date = $min_date_arr[$min_date_arr_key];
+						$time_diff = $min_date->diff(new DateTime($latest_date));
+						if ($last_rank < 9){
+							$time_diff_value = $time_diff->days * 3.9 + 113.5;
+						} else {
+							$time_diff_value = $time_diff->days * 3.1 + 113.5;
+						}
+						if ($time_diff->days == 0){
+							$time_diff_value = 155;
+						}
+						if ($time_diff_value > 1489){
+							$time_diff_value == 1489;
+						}
 						if ($last_rank < 3) {
 							$class = ' pts5500';
 						} elseif ($last_rank > 2 && $last_rank < 5){
@@ -277,9 +295,9 @@ get_header(); ?>
 						}
 						$user_display_name = get_userdata($ranked_user_id);
 						if ($last_rank < 3){
-							$output = '<div class="item static'. $class .' '. $time_diff_class .'"><img class="rank_avatar" src="' . $user_avatar_url . '" width="45" height="45" /><h5>' . $user_display_name->display_name .'</h5><div class="date">From: ' . $latest_date . '</div></div>';
+							$output = '<div class="item static'. $class .'"><img class="rank_avatar" src="' . $user_avatar_url . '" width="45" height="45" /><h5>' . $user_display_name->display_name .'</h5><div class="date">From: ' . $latest_date . '<br />'. $time_diff->days .' day(s) on this rank</div></div>';
 						} else {
-							$output = '<div class="item'. $class .' '. $time_diff_class .'"><img class="rank_avatar" src="' . $user_avatar_url . '" width="45" height="45" /><h5>' . $user_display_name->display_name .'</h5><span class="pts_val">PTS: '. $pts_val .'</span><div class="date">From: ' . $latest_date . '</div></div>';
+							$output = '<div style="left:'. $time_diff_value .'px;" class="item'. $class .'"><img class="rank_avatar" src="' . $user_avatar_url . '" width="45" height="45" /><h5>' . $user_display_name->display_name .'</h5><span class="pts_val">PTS: '. $pts_val .'</span><div class="date">From: ' . $latest_date . '<br />'. $time_diff->days .' day(s) on this rank</div></div>';
 						}
 						if ($display_rank == $last_rank){
 							echo $output;

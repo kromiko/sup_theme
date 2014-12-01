@@ -3653,8 +3653,8 @@ p.userhobby{
 .label{
 	display:inline-block;
 	background:rgba(0, 0, 0, 0.3);
-	line-height:189px;
-	min-width:155px;
+	line-height:180px;
+	min-width:156px;
 }
 .rank_value{
   display:inline-block;
@@ -3670,7 +3670,7 @@ p.userhobby{
 	position:relative;
 	text-align:center;
 	transform:rotate(-90deg);
-	width:130px;
+	width:131px;
 }
 .pts_val{
   color:#4c4c4c;
@@ -3678,9 +3678,16 @@ p.userhobby{
   font-weight:bold;
 }
 .twelve, .eleven, .ten, .nine, .eight, .seven, .six, .five, .four, .three, .two, .one, .apprentice, .neophyte, .novice{
-	min-height:189px;
+	height:180px;
 	color:#fff;
 	position:relative;
+}
+.neophyte, .novice{
+	min-height:180px;
+	height:auto;
+}
+.neophyte .label, .novice .label{
+	line-height:185px;
 }
 .novice{
 	background:#00abd1;
@@ -3729,14 +3736,32 @@ p.userhobby{
 }
 .item{
 	display:inline-block;
-	margin:0 0 0 20px;
+	margin:0;
 	text-align:center;
-	position:relative;
+	position:absolute;
 	vertical-align:bottom;
+	transition:all 200ms ease-out;
+}
+.item:hover{
+	z-index:10;
+	background:rgba(255,255,255,0.85);
+	border-radius:2px;
+	padding:0 2px;
+	transition:all 200ms ease-out;
+}
+.item.pts-peak:hover{
+	border-radius:0 0 3px 3px;
+	padding:0 3px;
 }
 .item.static{
 	padding-top:12px;
 	padding-bottom:12px;
+	position:relative;
+	margin-left:20px;
+}
+.item.static:hover{
+	background:none;
+	padding:12px 0;
 }
 .item h5{
 	margin:2px 0 0;
@@ -3755,7 +3780,6 @@ p.userhobby{
   color: #4c4c4c;
   font-family: Arial;
   font-size: 14px;
-  font-weight: bold;
   display:none;
   background:rgba(255, 255, 255, 0.9);
   border-radius:3px;
@@ -3764,6 +3788,7 @@ p.userhobby{
   top:10px;
   left:80px;
   z-index:1;
+  width:150px;
 }
 
 .pts500{
