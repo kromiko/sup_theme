@@ -188,10 +188,6 @@ add_action( 'wp_enqueue_scripts', 'twentythirteen_scripts_styles' );
 
 /* admin scripts and styles*/
 function twentythirteen_admin_scripts_styles(/*$hook*/) {
-    /*if ( 'options-general.php' != $hook ) {
-        return;
-    }*/
-	wp_enqueue_script('user-raiting', get_template_directory_uri() . '/js/user-raiting.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-datepicker' ));
 	wp_enqueue_style( 'user-raiting', '//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css', array(), '2014-10-31' );
 }
 add_action( 'admin_enqueue_scripts', 'twentythirteen_admin_scripts_styles' );
