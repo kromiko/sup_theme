@@ -58,9 +58,9 @@ class WP_Widget_WIB_display extends WP_Widget {
 		$lim = $number;
 
 		if (!($lim)){
-			$url = 'http://dreamteam.bunker.devoffice.com/wib_api_test.php?search_date_from='.$ds.'&search_date_to='.$de.'';
+			$url = 'http://dreamteam.bunker.devoffice.com/wib_api.php?search_date_from='.$ds.'&search_date_to='.$de.'';
 		} else {
-			$url = 'http://dreamteam.bunker.devoffice.com/wib_api_test.php?search_date_from='.$ds.'&search_date_to='.$de.'&limit='.$lim.'';
+			$url = 'http://dreamteam.bunker.devoffice.com/wib_api.php?search_date_from='.$ds.'&search_date_to='.$de.'&limit='.$lim.'';
 		}
 		curl_setopt($curlInit, CURLOPT_URL, $url);
 		curl_setopt($curlInit, CURLOPT_RETURNTRANSFER, 1);
@@ -70,7 +70,7 @@ class WP_Widget_WIB_display extends WP_Widget {
 ?>
 		<?php echo $args['before_widget']; ?>
 		<?php if ( $title ) {
-			echo $args['before_title'] . $title . $output->class_val . $args['after_title'];
+			echo $args['before_title'] . '<span class="dashicons dashicons-lightbulb '. $output->class_val .'"></span>' . $title . $args['after_title'];
 		} ?>
 		<?php echo $output->output; ?>
 		<?php echo $args['after_widget']; ?>

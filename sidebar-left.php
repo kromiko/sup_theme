@@ -9,11 +9,9 @@
  * @since Twenty Thirteen 1.0
  */
 ?>
-
-<?php
-if ( is_active_sidebar( 'sidebar-3' ) ) : ?>
+<?php if ( is_active_sidebar( 'sidebar-3' ) ) : ?>
 	<div id="left-hidden" class="sidebar-container" role="complementary">
-		<div class="open-tag"><?php echo __( 'Open Sidebar', 'twentythirteen' ); ?></div>
+		<div class="open-tag"><?php echo __( 'Show Sidebar', 'twentythirteen' ); ?></div>
 		<div class="sidebar-inner">
 			<div class="widget-area">
 				<?php dynamic_sidebar( 'sidebar-3' ); ?>

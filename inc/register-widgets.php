@@ -6,7 +6,7 @@
 function sup_theme_load_widgets() {
 	$widget_files = array(
 		'WP_Widget_Useful_Links_Categories'    => 'widget-useful_categories.php',
-		//'Tickets_RMS' => 'vbwidget.php',
+		'Tickets_RMS' => 'vbwidget.php',
 		'My_WP_Widget_Recent_Posts'			   => 'pe_news_widget.php',
 		'WP_Widget_WIB_display' 			   => 'widget-wib_display.php'
 	);

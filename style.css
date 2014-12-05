@@ -3588,12 +3588,65 @@ p.userhobby{
 .hobby_cat h5 {
   margin: 0 0 15px;
 }
+
+/* widget WIB */
 .widget_wib_display .wib-item-meta{
 	font-weight:bold;
 }
 .widget_wib_display .well{
 	border-bottom:1px dashed;
 	margin:0 0 20px;
+}
+.widget_wib_display .wib-row:last-child .well {
+  border-bottom:none;
+  margin:0;
+}
+.widget_wib_display .wib-row:last-child .well p {
+  margin: 0;
+}
+.widget_wib_display .widget-title {
+  background:#999;
+  border-radius:3px;
+  color:rgb(240, 240, 240);
+  line-height:40px;
+  padding:10px 0 10px 10px;
+}
+/* default light bulb state */
+.widget_wib_display .dashicons-lightbulb {
+  color:rgba(255, 255, 255, 0.3);
+  font-size:40px;
+  height:auto;
+  text-shadow:none;
+  transition:all 200ms ease-out;
+  width:auto;
+}
+/* light bulb turned off */
+.widget_wib_display .dashicons-lightbulb.off {
+	color:rgba(255, 255, 255, 0.1);
+	text-shadow:none;
+	animation-duration:1s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-name: blink;
+}
+@keyframes blink {
+  from {
+    color:rgba(255,255,255,0.1);
+  }
+
+  to {
+    color:rgba(255,255,255,0.2);
+  }
+}
+/* light bulb medium brightness */
+.widget_wib_display .dashicons-lightbulb.medium {
+	color:rgba(255, 255, 255, 0.9);
+	text-shadow:none;
+}
+/* light bulb max-brightness */
+.widget_wib_display .dashicons-lightbulb.max {
+	color:rgba(255, 255, 255, 1);
+	text-shadow:-2px -2px 14px rgba(255, 255, 255, 1), 2px -2px 14px rgba(255, 255, 255, 1), 0 0 40px rgba(255, 255, 255, 0.1), 0 0 40px rgba(255, 255, 255, 0.1);
 }
 
 /* Left Sidebar */
@@ -3624,26 +3677,15 @@ p.userhobby{
 #left-hidden .widget {
   border-bottom:5px solid #fff;
   margin-bottom:0;
-  margin-right:25px;
+  margin-right:5px;
 }
 #left-hidden .widget:last-child {
   border-bottom:none;
 }
 
-.widget_wib_display .widget-title{
-	animation-duration:1s;
-	animation-iteration-count: infinite;
-	animation-direction: alternate;
-	animation-name: blink;
-}
-@keyframes blink {
-  from {
-    color:rgba(0,0,0,1);
-  }
 
-  to {
-    color:rgba(0,0,0,0.1);
-  }
+.lwa td.lwa-submit-links{
+	padding:0 0 0 10px;
 }
 
 /* rank page */
@@ -3653,7 +3695,7 @@ p.userhobby{
 .label{
 	display:inline-block;
 	background:rgba(0, 0, 0, 0.3);
-	line-height:180px;
+	line-height:185px;
 	min-width:156px;
 }
 .rank_value{
@@ -3678,12 +3720,12 @@ p.userhobby{
   font-weight:bold;
 }
 .twelve, .eleven, .ten, .nine, .eight, .seven, .six, .five, .four, .three, .two, .one, .apprentice, .neophyte, .novice{
-	height:180px;
+	height:185px;
 	color:#fff;
 	position:relative;
 }
 .neophyte, .novice{
-	min-height:180px;
+	min-height:185px;
 	height:auto;
 }
 .neophyte .label, .novice .label{
@@ -3745,35 +3787,33 @@ p.userhobby{
 .item:hover{
 	z-index:10;
 	background:rgba(255,255,255,0.85);
-	border-radius:2px;
+	border-radius:2px 2px 0 2px;
 	padding:0 2px;
 	transition:all 200ms ease-out;
 }
 .item.pts-peak:hover{
-	border-radius:0 0 3px 3px;
+	border-radius:0 0 0 3px;
 	padding:0 3px;
 }
 .item.static{
-	padding-top:12px;
-	padding-bottom:12px;
 	position:relative;
 	margin-left:20px;
 }
-.item.static:hover{
-	background:none;
-	padding:12px 0;
-}
 .item h5{
-	margin:2px 0 0;
-	text-shadow:-1px 0 #666, 0 1px #666, 1px 0 #666, 0 -1px #666;
-	font-size:14px;
+	margin:0 0 0 5px;
+	font-size:12px;
 	line-height:14px;
+	color:#000;
+	display:inline-block;
+	font-family:Arial;
+	font-weight:normal;
+	vertical-align:middle;
 }
 .rank_avatar {
   border-radius: 5px;
   display: inline-block;
   overflow: hidden;
-  width:45px;
+  width:30px;
   height:auto;
 }
 .item .date {
@@ -3782,105 +3822,105 @@ p.userhobby{
   font-size: 14px;
   display:none;
   background:rgba(255, 255, 255, 0.9);
-  border-radius:3px;
+  border-radius:0 3px 3px 3px;
   padding:10px 5px;
   position:absolute;
-  top:10px;
-  left:80px;
+  top:8px;
+  left:100%;
   z-index:1;
-  width:150px;
+  width:170px;
 }
 
 .pts500{
-	margin-top:100px;
+	margin-top:161px;
 	margin-bottom:0;
 }
 .pts1000{
-	margin-top:95px;
-	margin-bottom:5px;
+	margin-top:152.95;
+	margin-bottom:8.05px;
 }
 .pts1500{
-	margin-top:90px;
-	margin-bottom:10px;
+	margin-top:144.9;
+	margin-bottom:16.1px;
 }
 .pts2000{
-	margin-top:85px;
-	margin-bottom:15px;
+	margin-top:136.85px;
+	margin-bottom:24.15px;
 }
 .pts2500{
-	margin-top:80px;
-	margin-bottom:20px;
+	margin-top:128.8px;
+	margin-bottom:32.2px;
 }
 .pts3000{
-	margin-top:75px;
-	margin-bottom:25px;
+	margin-top:120.75px;
+	margin-bottom:40.25px;
 }
 .pts3500{
-	margin-top:70px;
-	margin-bottom:30px;
+	margin-top:112.7px;
+	margin-bottom:48.3px;
 }
 .pts4000{
-	margin-top:65px;
-	margin-bottom:35px;
+	margin-top:104.65px;
+	margin-bottom:56.35px;
 }
 .pts4500{
-	margin-top:60px;
-	margin-bottom:40px;
+	margin-top:96.6px;
+	margin-bottom:64.6px;
 }
 .pts5000{
-	margin-top:55px;
-	margin-bottom:45px;
+	margin-top:88.55px;
+	margin-bottom:72.45px;
 }
 .pts5500{
-	margin-top:50px;
-	margin-bottom:50px;
+	margin-top:80.5px;
+	margin-bottom:80.5px;
 }
 .pts6000{
-	margin-top:45px;
-	margin-bottom:55px;
+	margin-top:72.45px;
+	margin-bottom:88.55px;
 }
 .pts6500{
-	margin-top:40px;
-	margin-bottom:60px;
+	margin-top:64.6px;
+	margin-bottom:96.6px;
 }
 .pts7000{
-	margin-top:35px;
-	margin-bottom:65px;
+	margin-top:56.35px;
+	margin-bottom:104.65px;
 }
 .pts7500{
-	margin-top:30px;
-	margin-bottom:70px;
+	margin-top:48.3px;
+	margin-bottom:112.7px;
 }
 .pts8000{
-	margin-top:25px;
-	margin-bottom:75px;
+	margin-top:40.25px;
+	margin-bottom:120.75px;
 }
 .pts8500{
-	margin-top:20px;
-	margin-bottom:80px;
+	margin-top:32.2px;
+	margin-bottom:128.8px;
 }
 .pts9000{
-	margin-top:15px;
-	margin-bottom:85px;
+	margin-top:24.15px;
+	margin-bottom:136.85px;
 }
 .pts9500{
-	margin-top:10px;
-	margin-bottom:90px;
+	margin-top:16.1px;
+	margin-bottom:144.9px;
 }
 .pts10000{
-	margin-top:5px;
-	margin-bottom:95px;
+	margin-top:8.05px;
+	margin-bottom:152.95px;
 }
 .pts-peak{
 	margin-top:0px;
-	margin-bottom:100px;
+	margin-bottom:161px;
 	border-radius:0 0 3px 3px;
 	padding:0 3px;
 	vertical-align:top;
 }
 
 .month{
-	border-right:1px dashed #000;
+	border-right:1px dashed rgba(0,0,0,0.2);
 	display:inline-block;
 	height:189px;
 	vertical-align:top;
@@ -3888,4 +3928,7 @@ p.userhobby{
 }
 .novice .month, .neophyte .month, .apprentice .month, .one .month, .two .month, .three .month, .four .month, .five .month{
   width:116px;
+}
+.fa-dot-circle-o, .fa-child, .fa-female, .fa-male{
+	color:#000;
 }

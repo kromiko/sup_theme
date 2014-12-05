@@ -6,9 +6,7 @@
  * @subpackage Twenty_Thirteen
  * @since Twenty Thirteen 1.0
  */
-
 get_header(); ?>
-
 	<div id="primary" class="content-area">
 		<div id="content" class="site-content" role="main">
 			<header class="archive-header">
@@ -26,6 +24,21 @@ get_header(); ?>
 					foreach ($ids as $ranked_user_id){
 						$user_rank = get_user_meta($ranked_user_id, '_pts', true);
 						$user_avatar = get_user_meta($ranked_user_id, 'simple_local_avatar', true);
+						$user_gender = get_user_meta($ranked_user_id, '_gender', true);
+						if ($user_gender == 'male'){
+							$usr_ico = '<i class="fa fa-male"></i>';
+						} elseif ($user_gender == 'female') {
+							$usr_ico = '<i class="fa fa-female"></i>';
+						} else {
+							$usr_ico = '<i class="fa fa-dot-circle-o"></i>';
+						}
+						$user_city = get_user_meta($ranked_user_id, '_city', true);
+						$city_display = 'City: ' . $user_city . '<br />';
+						$user_shift = get_user_meta($ranked_user_id, '_shift', true);
+						if ($user_shift){
+							$shifts = implode(",", $user_shift);
+							$shifts_display = 'Shift(s): ' . $shifts;
+						}
 						$user_avatar_url = $user_avatar[96];
 						if (!$user_avatar_url){
 							$user_avatar_url = get_template_directory_uri() . '/images/mystery-man.jpg';
@@ -40,25 +53,18 @@ get_header(); ?>
 						$last_rank = $cur_view['cur_rank'];
 						$pts_val = $cur_view['pts'];
 						
-						$min_date_arr = array();
-						foreach ($user_rank as $key => $value) {
-							if ($value['cur_rank'] == $last_rank){
-								$min_date_arr[$key] = new DateTime($value['date']);
-							}
-						}
-						$min_date_arr_key = array_search( min($min_date_arr), $min_date_arr );
-						$min_date = $min_date_arr[$min_date_arr_key];
+						$min_date = new DateTime(date('d.m.Y'));
 						$time_diff = $min_date->diff(new DateTime($latest_date));
 						if ($last_rank < 9){
-							$time_diff_value = $time_diff->days * 3.9 + 113.5;
+							$time_diff_value = $time_diff->days * 3.9 + 156;
 						} else {
-							$time_diff_value = $time_diff->days * 3.1 + 113.5;
+							$time_diff_value = $time_diff->days * 3.1 + 156;
 						}
 						if ($time_diff->days == 0){
-							$time_diff_value = 155;
+							$time_diff_value = 156;
 						}
 						if ($time_diff_value > 1489){
-							$time_diff_value == 1489;
+							$time_diff_value = 1489;
 						}
 						if ($last_rank < 3) {
 							$class = ' pts5500';
@@ -295,9 +301,9 @@ get_header(); ?>
 						}
 						$user_display_name = get_userdata($ranked_user_id);
 						if ($last_rank < 3){
-							$output = '<div class="item static'. $class .'"><img class="rank_avatar" src="' . $user_avatar_url . '" width="45" height="45" /><h5>' . $user_display_name->display_name .'</h5><div class="date">From: ' . $latest_date . '<br />'. $time_diff->days .' day(s) on this rank</div></div>';
+							$output = '<div style="left:'. $time_diff_value .'px;" class="item static'. $class .'">'. $usr_ico .'<h5>' . $user_display_name->display_name .'</h5><div class="date"><img class="rank_avatar" src="' . $user_avatar_url . '" width="30" height="30" /><br /><span class="pts_val">'. $pts_val .' PTS</span><br />from ' . $latest_date . '<br />'. $time_diff->days .' day(s) on this rank<br />'. $city_display . $shifts_display .'</div></div>';
 						} else {
-							$output = '<div style="left:'. $time_diff_value .'px;" class="item'. $class .'"><img class="rank_avatar" src="' . $user_avatar_url . '" width="45" height="45" /><h5>' . $user_display_name->display_name .'</h5><span class="pts_val">PTS: '. $pts_val .'</span><div class="date">From: ' . $latest_date . '<br />'. $time_diff->days .' day(s) on this rank</div></div>';
+							$output = '<div style="left:'. $time_diff_value .'px;" class="item'. $class .'">'. $usr_ico .'<h5>' . $user_display_name->display_name .'</h5><div class="date"><img class="rank_avatar" src="' . $user_avatar_url . '" width="30" height="30" /><br /><span class="pts_val">'. $pts_val .' PTS</span><br />from ' . $latest_date . '<br />'. $time_diff->days .' day(s) on this rank<br />'. $city_display . $shifts_display .'</div></div>';
 						}
 						if ($display_rank == $last_rank){
 							echo $output;
@@ -374,5 +380,5 @@ jQuery('.item').hover(function(){
 	jQuery('.date', this).fadeToggle(200);
 });
 </script>
-<?php //get_sidebar(); ?>
+<?php get_sidebar(); ?>
 <?php get_footer(); ?>

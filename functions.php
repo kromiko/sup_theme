@@ -23,7 +23,6 @@
  * @subpackage Twenty_Thirteen
  * @since Twenty Thirteen 1.0
  */
-
 /**
  * Sets up the content width value based on the theme's design.
  * @see twentythirteen_content_width() for template-specific adjustments.
@@ -81,14 +80,6 @@ function twentythirteen_setup() {
 	// to output valid HTML5.
 	add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list' ) );
 
-	/*
-	 * This theme supports all available post formats by default.
-	 * See http://codex.wordpress.org/Post_Formats
-	 */
-	//add_theme_support( 'post-formats', array(
-	//	'aside', 'audio', 'chat', 'gallery', 'image', 'link', 'quote', 'status', 'video'
-	//) );
-
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menu( 'primary', __( 'Navigation Menu', 'twentythirteen' ) );
 
@@ -104,7 +95,7 @@ function twentythirteen_setup() {
 }
 add_action( 'after_setup_theme', 'twentythirteen_setup' );
 
-/* custom admin menus */
+/* custom admin menu */
 require get_template_directory() . '/admin/hobbies_page.php';
 require get_template_directory() . '/admin/rank_page.php';
 
@@ -178,7 +169,7 @@ function twentythirteen_scripts_styles() {
 	wp_enqueue_style( 'genericons', get_template_directory_uri() . '/fonts/genericons.css', array(), '2.09' );
 
 	// Loads our main stylesheet.
-	wp_enqueue_style( 'twentythirteen-style', get_stylesheet_uri(), array(), '2013-07-18' );
+	wp_enqueue_style( 'twentythirteen-style', get_stylesheet_uri(), array('dashicons'), '2013-07-18' );
 
 	// Loads the Internet Explorer specific stylesheet.
 	wp_enqueue_style( 'twentythirteen-ie', get_template_directory_uri() . '/css/ie.css', array( 'twentythirteen-style' ), '2013-07-18' );
@@ -187,7 +178,8 @@ function twentythirteen_scripts_styles() {
 add_action( 'wp_enqueue_scripts', 'twentythirteen_scripts_styles' );
 
 /* admin scripts and styles*/
-function twentythirteen_admin_scripts_styles(/*$hook*/) {
+function twentythirteen_admin_scripts_styles() {
+	wp_enqueue_script('user-raiting', get_template_directory_uri() . '/js/user-raiting.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-datepicker' ));
 	wp_enqueue_style( 'user-raiting', '//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css', array(), '2014-10-31' );
 }
 add_action( 'admin_enqueue_scripts', 'twentythirteen_admin_scripts_styles' );
@@ -286,7 +278,7 @@ function twentythirteen_paging_nav() {
 
 		</div><!-- .nav-links -->
 	</nav><!-- .navigation -->
-	<?php
+<?php
 }
 endif;
 
@@ -317,7 +309,7 @@ function twentythirteen_post_nav() {
 
 		</div><!-- .nav-links -->
 	</nav><!-- .navigation -->
-	<?php
+<?php
 }
 endif;
 
@@ -746,7 +738,7 @@ include_once get_template_directory() . '/inc/register-widgets.php';
 /* sets RSS update time to one hour */
 add_filter( 'wp_feed_cache_transient_lifetime', create_function('$a', 'return 3600;') );
 
-/* post karma raiting display*/
+/* post karma raiting display */
 function karma_results_display($karma_post_id) {
 	global $wpdb;
 	$get_karma = $wpdb->get_var( "SELECT karma_value FROM wp_karma_new WHERE karma_post_id = ".$karma_post_id."" );
@@ -938,7 +930,7 @@ class supTheme_walker_comment extends Walker_Comment {
         $GLOBALS['comment_depth'] = $depth + 1; ?>
  
                 <ul class="children">
-    <?php }
+<?php }
  
     /** END_LVL
      * Ends the children list of after the elements are added. */
@@ -947,7 +939,7 @@ class supTheme_walker_comment extends Walker_Comment {
  
         </ul><!-- /.children -->
          
-    <?php }
+<?php }
      
     /** START_EL */
     function start_el( &$output, $comment, $depth, $args, $id = 0 ) {
@@ -1024,7 +1016,9 @@ function do_update_user_profile() {
 		$new_firstname = $_POST['newfirstname'];
 		$new_lastname = $_POST['newlastname'];
 		$new_displayname = $_POST['newdisplayname'];
-		
+		$new_gender = $_POST['newgender'];
+		$new_city = $_POST['newcity'];
+		$new_shift = $_POST['newshift'];
 		
 		if ($new_pwd){
 			if ($new_pwd == $verify_pwd){
@@ -1033,13 +1027,13 @@ function do_update_user_profile() {
 					'success' => '1',
 					'pwd_message' => 'Password has been updated. Please re-login to your account!'
 				);
-				wp_send_json($return);
+				//wp_send_json($return);
 			} else {
 				$return = array(
 					'success' => '0',
 					'pwd_message' => 'Passwords do not match'
 				);
-				wp_send_json($return);
+				//wp_send_json($return);
 			}
 		}
 		
@@ -1055,6 +1049,15 @@ function do_update_user_profile() {
 		if ($new_displayname != 'false'){
 			$displayname_to_db = strip_tags($new_displayname);
 		}
+		if ($new_gender != 'false'){
+			$gender_to_db = strip_tags($new_gender);
+		}
+		if ($new_city != 'false'){
+			$city_to_db = strip_tags($new_city);
+		}
+		if ($new_shift != 'false'){
+			$shift_to_db = $new_shift;
+		}
 		
 		if ($firstname_to_db || $lastname_to_db){
 			if ($firstname_to_db){
@@ -1068,19 +1071,19 @@ function do_update_user_profile() {
 					'success' => '1',
 					'name_message' => 'First and last names were updated'
 				);
-				wp_send_json($return);
+				//wp_send_json($return);
 			} elseif ($firstname_upd) {
 				$return = array(
 					'success' => '1',
 					'name_message' => 'First name was updated'
 				);
-				wp_send_json($return);
+				//wp_send_json($return);
 			} else {
 				$return = array(
 					'success' => '1',
 					'name_message' => 'Last name was updated'
 				);
-				wp_send_json($return);
+				//wp_send_json($return);
 			}
 			
 		}
@@ -1109,15 +1112,64 @@ function do_update_user_profile() {
 					'success' => '1',
 					'mail_message' => 'Email and/or Display name was/were updated'
 				);
-				wp_send_json($return);
+				//wp_send_json($return);
 			} else {
 				$return = array(
 					'success' => '0',
 					'mail_message' => 'Email and/or Display name was/were not updated'
 				);
-				wp_send_json($return);
+				//wp_send_json($return);
 			}
 		}
+		
+		if ($gender_to_db){
+			if (update_user_meta($usr_id, '_gender', $gender_to_db)){
+				$return = array(
+					'success' => '1',
+					'gender_message' => 'Gender has been updated'
+				);
+				//wp_send_json($return);
+			} else {
+				$return = array(
+					'success' => '0',
+					'gender_message' => 'Gender has not been updated'
+				);
+				//wp_send_json($return);
+			}
+		}
+		
+		if ($city_to_db){
+			if (update_user_meta($usr_id, '_city', $city_to_db)){
+				$return = array(
+					'success' => '1',
+					'city_message' => 'City information has been updated'
+				);
+				//wp_send_json($return);
+			} else {
+				$return = array(
+					'success' => '0',
+					'city_message' => 'City information has not been updated'
+				);
+				//wp_send_json($return);
+			}
+		}
+		
+		if ($shift_to_db){
+			if (update_user_meta($usr_id, '_shift', $shift_to_db)){
+				$return = array(
+					'success' => '1',
+					'shift_message' => 'Shift information has been updated'
+				);
+				//wp_send_json($return);
+			} else {
+				$return = array(
+					'success' => '0',
+					'shift_message' => 'Shift information has not been updated'
+				);
+				//wp_send_json($return);
+			}
+		}
+		wp_send_json($return);
 	}
 }
 
@@ -1204,7 +1256,7 @@ function do_get_rating_data(){
 	if ($user_id){
 		$pts_arr = get_user_meta($user_id, '_pts', true);
 		if ($pts_arr){
-			$output_pts .= '<table><tr><th><strong>Rank</strong></th><th><strong>PTS</strong></th><th><strong>Date</strong></th><th><strong>Edit</strong></th><th><strong>Delete</strong></th></tr>';
+			$output_pts .= '<table><tr><th><strong>Rank</strong></th><th><strong>PTS</strong></th><th><strong>Date</strong></th><th><strong>Delete</strong></th></tr>';
 			foreach ($pts_arr as $pts_key=>$pts_values){
 				$output_pts .= '<tr id="'. $pts_key .'">';
 				foreach ($pts_values as $value){
@@ -1258,7 +1310,6 @@ function do_get_rating_data(){
 						$output_pts .= '<td>' . $value . '</td>';
 					}
 				}
-				$output_pts .= '<td align="center"><span class="dashicons dashicons-edit"></span></td>';
 				$output_pts .= '<td align="center"><span class="dashicons dashicons-trash"></span></td>';
 				$output_pts .= '</tr>';
 			}

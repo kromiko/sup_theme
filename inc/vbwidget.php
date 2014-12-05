@@ -43,9 +43,9 @@ class Tickets_RMS extends WP_Widget {
 		$forumname = $instance['forumname'];
         
 		//$forum_url=$vbulletin->options['bburl'];			
-        //Begin Thread Counts 
-        $toutput = get_last_threads($forumname, $numberposts); 
-         
+        //Begin Thread Counts
+        $toutput = get_last_threads($forumname, $numberposts);
+        
 		//print the widget for the sidebar
 		echo $args['before_widget'] . $args['before_title'] . $title . $args['after_title'] . $toutput . $args['after_widget'];
 	}

@@ -32,7 +32,6 @@
     <?php
 		if (is_page_template('profile-page.php')){
 			echo '<script type="text/javascript" src="' . get_template_directory_uri() . '/js/profile.js"></script>';
-			//echo '<link rel="stylesheet" href="' . get_template_directory_uri() . '/css/jquery-ui/jquery-ui.min.css">';
 			echo '<link rel="stylesheet" href="' . get_template_directory_uri() . '/css/jquery-ui/jquery-ui-1.9.2.custom.min.css">';
 		}
 	?> 

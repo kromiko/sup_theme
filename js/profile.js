@@ -69,8 +69,8 @@ jQuery(document).ready(function() {
 });
 
 // ajax to update user options
-function update_password_ajax(userid, newpwd, confirmpwd, newMail, newFirstname, newLastname, newDisplayname){
-	if (userid != '' && (newpwd != '' || confirmpwd != '' || newMail != '' || newFirstname != '' || newLastname != '' || newDisplayname != '')){
+function update_password_ajax(userid, newpwd, confirmpwd, newMail, newFirstname, newLastname, newDisplayname, newGender, newCity, shifts){
+	if (userid != '' && (newpwd != '' || confirmpwd != '' || newMail != '' || newFirstname != '' || newLastname != '' || newDisplayname != '' || newGender != '' || newCity != '' || shifts != '')){
 		var data = {
 			action: 'update_user_profile',
 			user_id: userid,
@@ -79,7 +79,10 @@ function update_password_ajax(userid, newpwd, confirmpwd, newMail, newFirstname,
 			newmail: newMail,
 			newfirstname: newFirstname,
 			newlastname: newLastname,
-			newdisplayname: newDisplayname
+			newdisplayname: newDisplayname,
+			newgender: newGender,
+			newcity: newCity,
+			newshift: shifts
 		}
 	};
 	jQuery.ajax({
