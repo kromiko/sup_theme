@@ -154,9 +154,7 @@ get_header(); ?>
 			});
 			var shifts = shiftsRaw.sort();
 			oldShiftsStr = oldShifts.toString();
-			console.log(oldShiftsStr);
 			shiftsStr = shifts.toString();
-			console.log(shiftsStr);
 			if (newMail == oldMail){
 				newMail = 'false';
 			}

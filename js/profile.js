@@ -92,13 +92,22 @@ function update_password_ajax(userid, newpwd, confirmpwd, newMail, newFirstname,
 		success: function(msg){
 			if (msg.success == '1'){
 				if (msg.pwd_message){
-					jQuery('#service_message').html(msg.pwd_message).fadeIn(300).delay(2300).fadeOut(300);
+					jQuery("#service_message").append(msg.pwd_message).fadeIn(300).delay(2300).fadeOut(300);
 				}
 				if (msg.mail_message){
-					jQuery('#email_message').html(msg.mail_message).fadeIn(300).delay(2300).fadeOut(300);
+					jQuery("#service_message").append(msg.mail_message).fadeIn(300).delay(2300).fadeOut(300);
 				}
 				if (msg.name_message){
-					jQuery('#name_message').html(msg.name_message).fadeIn(300).delay(2300).fadeOut(300);
+					jQuery("#service_message").append(msg.name_message).fadeIn(300).delay(2300).fadeOut(300);
+				}
+				if (msg.gender_message){
+					jQuery("#service_message").append(msg.gender_message).fadeIn(300).delay(2300).fadeOut(300);
+				}
+				if (msg.city_message){
+					jQuery("#service_message").append(msg.city_message).fadeIn(300).delay(2300).fadeOut(300);
+				}
+				if (msg.shift_message){
+					jQuery("#service_message").append(msg.shift_message).fadeIn(300).delay(2300).fadeOut(300);
 				}
 			} else {
 				if (msg.pwd_message){

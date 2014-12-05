@@ -33,11 +33,17 @@ get_header(); ?>
 							$usr_ico = '<i class="fa fa-dot-circle-o"></i>';
 						}
 						$user_city = get_user_meta($ranked_user_id, '_city', true);
-						$city_display = 'City: ' . $user_city . '<br />';
+						if ($user_city){
+							$city_display = 'City: ' . $user_city . '<br />';
+						} else {
+							$city_display = '';
+						}
 						$user_shift = get_user_meta($ranked_user_id, '_shift', true);
 						if ($user_shift){
 							$shifts = implode(",", $user_shift);
 							$shifts_display = 'Shift(s): ' . $shifts;
+						} else {
+							$shifts_display = '';
 						}
 						$user_avatar_url = $user_avatar[96];
 						if (!$user_avatar_url){

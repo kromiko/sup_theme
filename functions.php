@@ -1019,6 +1019,7 @@ function do_update_user_profile() {
 		$new_gender = $_POST['newgender'];
 		$new_city = $_POST['newcity'];
 		$new_shift = $_POST['newshift'];
+		$return = array();
 		
 		if ($new_pwd){
 			if ($new_pwd == $verify_pwd){
@@ -1027,13 +1028,11 @@ function do_update_user_profile() {
 					'success' => '1',
 					'pwd_message' => 'Password has been updated. Please re-login to your account!'
 				);
-				//wp_send_json($return);
 			} else {
 				$return = array(
 					'success' => '0',
 					'pwd_message' => 'Passwords do not match'
 				);
-				//wp_send_json($return);
 			}
 		}
 		
@@ -1071,19 +1070,16 @@ function do_update_user_profile() {
 					'success' => '1',
 					'name_message' => 'First and last names were updated'
 				);
-				//wp_send_json($return);
 			} elseif ($firstname_upd) {
 				$return = array(
 					'success' => '1',
 					'name_message' => 'First name was updated'
 				);
-				//wp_send_json($return);
 			} else {
 				$return = array(
 					'success' => '1',
 					'name_message' => 'Last name was updated'
 				);
-				//wp_send_json($return);
 			}
 			
 		}
@@ -1112,13 +1108,11 @@ function do_update_user_profile() {
 					'success' => '1',
 					'mail_message' => 'Email and/or Display name was/were updated'
 				);
-				//wp_send_json($return);
 			} else {
 				$return = array(
 					'success' => '0',
 					'mail_message' => 'Email and/or Display name was/were not updated'
 				);
-				//wp_send_json($return);
 			}
 		}
 		
@@ -1128,13 +1122,11 @@ function do_update_user_profile() {
 					'success' => '1',
 					'gender_message' => 'Gender has been updated'
 				);
-				//wp_send_json($return);
 			} else {
 				$return = array(
 					'success' => '0',
 					'gender_message' => 'Gender has not been updated'
 				);
-				//wp_send_json($return);
 			}
 		}
 		
@@ -1144,13 +1136,11 @@ function do_update_user_profile() {
 					'success' => '1',
 					'city_message' => 'City information has been updated'
 				);
-				//wp_send_json($return);
 			} else {
 				$return = array(
 					'success' => '0',
 					'city_message' => 'City information has not been updated'
 				);
-				//wp_send_json($return);
 			}
 		}
 		
@@ -1160,13 +1150,11 @@ function do_update_user_profile() {
 					'success' => '1',
 					'shift_message' => 'Shift information has been updated'
 				);
-				//wp_send_json($return);
 			} else {
 				$return = array(
 					'success' => '0',
 					'shift_message' => 'Shift information has not been updated'
 				);
-				//wp_send_json($return);
 			}
 		}
 		wp_send_json($return);

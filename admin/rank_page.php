@@ -63,7 +63,6 @@ function rank_menu_admin_output() {
 <h3>Add new PTS/Rank value</h3>
 <p>
 	<label><?php _e("User rank:", 'twentythirteen' ); ?></label>
-	<?php /* ?><input type="text" id="<?php echo $cur_rank_field_name; ?>" name="<?php echo $cur_rank_field_name; ?>" value="" size="10"><?php */ ?>
 	<select id="<?php echo $cur_rank_field_name; ?>" name="<?php echo $cur_rank_field_name; ?>">
 		<option value=""><?php _e("-------------", 'twentythirteen'); ?></option>
 		<option value="1"><?php _e("Novice", 'twentythirteen'); ?></option>
