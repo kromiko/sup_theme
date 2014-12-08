@@ -323,11 +323,11 @@ get_header(); ?>
 						<?php display_user_rank('15', $ranked_user_ids); ?>
 						<div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div>
 					</div>
-					<div class="eleven"><div class="label"><span class="rank_value"><?php echo __( '11', 'twentythirteen' ); ?></span><span class="rank_name"><?php echo __( 'star<br />technician', 'twentythirteen' ); ?></span></div>
+					<div class="eleven"><div class="label"><span class="rank_value"><?php echo __( '11', 'twentythirteen' ); ?></span><span class="rank_name"><?php echo __( 'the legend', 'twentythirteen' ); ?></span></div>
 						<?php display_user_rank('14', $ranked_user_ids); ?>
 						<div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div>
 					</div>
-					<div class="ten"><div class="label"><span class="rank_value"><?php echo __( '10', 'twentythirteen' ); ?></span><span class="rank_name"><?php echo __( 'the legend', 'twentythirteen' ); ?></span></div>
+					<div class="ten"><div class="label"><span class="rank_value"><?php echo __( '10', 'twentythirteen' ); ?></span><span class="rank_name"><?php echo __( 'star<br />technician', 'twentythirteen' ); ?></span></div>
 						<?php display_user_rank('13', $ranked_user_ids); ?>
 						<div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div>
 					</div>

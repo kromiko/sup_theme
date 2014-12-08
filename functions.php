@@ -1286,10 +1286,10 @@ function do_get_rating_data(){
 						$rank_val = '9 - grand master';
 						$output_pts .= '<td title="12">' . $rank_val . '</td>';
 					} elseif ($value == 13) {
-						$rank_val = '10 - the legend';
+						$rank_val = '10 - star technician';
 						$output_pts .= '<td title="13">' . $rank_val . '</td>';
 					} elseif ($value == 14) {
-						$rank_val = '11 - star technician';
+						$rank_val = '11 - the legend';
 						$output_pts .= '<td title="14">' . $rank_val . '</td>';
 					} elseif ($value == 15) {
 						$rank_val = '12 - magician';

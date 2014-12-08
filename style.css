@@ -851,7 +851,7 @@ div.nav-menu > ul {
 	display: block;
 	font-size: 15px;
 	line-height: 1;
-	padding: 15px 20px;
+	padding: 15px 12px;
 	text-decoration: none;
 	font-weight:bold;
 }
@@ -3931,4 +3931,13 @@ p.userhobby{
 }
 .fa-dot-circle-o, .fa-child, .fa-female, .fa-male{
 	color:#000;
+}
+
+.nav-menu li#menu-item-29429 a{
+	background: url(images/pyramid-static.jpg) no-repeat left center;
+	padding-left:37px;
+}
+.nav-menu li#menu-item-29429 a:hover{
+	background: url(images/pyramid-animate.gif) no-repeat left center;
+	padding-left:37px;
 }

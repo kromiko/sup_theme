@@ -12,8 +12,8 @@ class Tickets_RMS extends WP_Widget {
 		$curdir = getcwd();
 		chdir($forum_root);
 		//require_once($forum_root . 'global.php');
-		require_once('./wp_recent_threads.php');
-		require_once('./wp_get_threads_content.php');
+		require_once('./wp_recent_threads_direct_mysql.php');
+		require_once('./wp_get_threads_content_direct_mysql.php');
 		//chdir($curdir);
 	}
 	
