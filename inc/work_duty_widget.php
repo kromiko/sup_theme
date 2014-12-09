@@ -15,7 +15,7 @@ class Work_Duty extends WP_Widget {
 		/* Widget settings. */
 		$widget_ops = array(
 			'classname' => 'widget_work_duty', 
-			'description' => 'Allows you to display a list of icons linked to custom resource.');
+			'description' => 'Allows you to display a list of icons linked to custom resource');
 
 		/* Widget control settings. */
 		$control_ops = array(
@@ -23,7 +23,7 @@ class Work_Duty extends WP_Widget {
 			'height' => 250, 
 			'id_base' => 'work_duty-widget');
 			
-		parent::__construct('work_duty-widget','Allows you to display a list of icons linked to custom resource',$widget_ops,$control_ops);	
+		parent::__construct('work_duty-widget','Work Duty Widget',$widget_ops,$control_ops);	
 	}
 	
 	function widget ($args,$instance) {
