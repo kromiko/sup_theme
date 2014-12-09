@@ -3941,3 +3941,32 @@ p.userhobby{
 	background: url(images/pyramid-animate.gif) no-repeat left center;
 	padding-left:37px;
 }
+
+/* Work Duty widget */
+.widget_work_duty .wig-item{
+	display:inline-block;
+    margin:0 15px 0 0;
+    text-align:center;
+    vertical-align:top;
+    width:65px;
+}
+.widget_work_duty .wig-item:last-child{
+  margin-right:0;
+}
+.widget_work_duty .wig-item a{
+	opacity:0.4;
+	transition:all 150ms ease-out;
+}
+.widget_work_duty .wig-item a:hover{
+	opacity:1;
+	transition:all 150ms ease-out;
+}
+.widget_work_duty .wig-item a img{
+	width:65px;
+	width:65px;
+}
+.widget_work_duty .wig-item a span{
+	display:inline-block;
+    font-size:12px;
+    line-height:14px;
+}
