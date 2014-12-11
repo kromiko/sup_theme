@@ -224,7 +224,7 @@ function gender_meta_box_callback( $post ) {
 	_e( 'Gender', 'support_theme' );
 	echo '</label> ';
 	echo '<select id="gender_field" name="gender_field">';
-		echo '<option value="">choose gender</option>';
+		echo '<option value="Male and Female">Male and Female</option>';
 		if ($value == 'Male'){
 			echo '<option selected="selected" value="Male">Male</option>';
 		} else {

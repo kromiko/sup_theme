@@ -55,7 +55,7 @@ get_header(); ?>
 						</div>
 						<div class="entry-meta">
 							<?php
-								echo '<span class="itm"><strong>City:</strong> ' . $city . '</span><span class="itm"><strong>Gender:</strong> ' . $gender . '</span><span class="itm"><strong>Shift:</strong> ' . $shift . '</span><span class="itm"><strong>Requirements:</strong> ' . $reqs . '</span><span class="itm"><strong>Contacts:</strong> ' . $contacts . '</span><span class="itm"><strong>Bonus:</strong> ' . $bonus . '</span>';
+								echo '<span class="itm"><strong>City:</strong> ' . $city . '</span><br /><span class="itm"><strong>Gender:</strong> ' . $gender . '</span><br /><span class="itm"><strong>Shift:</strong> ' . $shift . '</span><br /><span class="itm"><strong>Requirements:</strong> ' . $reqs . '</span><br /><span class="itm"><strong>Contacts:</strong> ' . $contacts . '</span><br /><span class="itm"><strong>Bonus:</strong> ' . $bonus . '</span>';
 							?>
 						</div>
 						<footer class="entry-meta">
