@@ -630,6 +630,38 @@ function my_post_type_private_enterprise() {
 }
 add_action('init', 'my_post_type_private_enterprise');
 
+//support openings custom post type
+function my_post_type_sup_openings() {
+	register_post_type( 'sup_openings',
+                array( 
+				'label' => __('Support openings'), 
+				'singular_label' => __('Support openings item', 'support_theme'),
+				'_builtin' => false,
+				'capability_type' => 'post',
+				'public' => true,
+				'publicly_queryable' => true, 
+				'show_ui' => true,
+				'show_in_nav_menus' => true,
+				'show_in_menu' => true,
+				'show_in_admin_bar' => true,
+				'hierarchical' => true,
+				'rewrite' => array(
+					'slug' => 'sup-opening',
+					'with_front' => FALSE,
+				),
+				'menu_icon' => 'dashicons-megaphone',
+				'supports' => array(
+						'title',
+						'editor',
+						'author',
+						'comments'
+					)
+				) 
+	);
+	register_taxonomy('sup_openings_category', 'sup_openings', array('hierarchical' => true, 'label' => 'Support openings Categories', 'singular_name' => 'Support openings Category', 'rewrite' => true, 'query_var' => true));
+}
+add_action('init', 'my_post_type_sup_openings');
+
 //time of day
 function time_of_day($content) {
    //$pdate = strtotime($content);
@@ -734,6 +766,11 @@ add_action( 'wp_enqueue_scripts', 'twentythirteen_add_style' );
 
 /* useful_links post custom meta boxes */
 include_once get_template_directory() . '/inc/useful_links-meta.php';
+
+/* sup_openings post custom meta boxes */
+include_once get_template_directory() . '/inc/support_openings-meta.php';
+
+/* registering widgets */
 include_once get_template_directory() . '/inc/register-widgets.php';
 
 /* sets RSS update time to one hour */

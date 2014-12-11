@@ -3970,3 +3970,69 @@ p.userhobby{
     font-size:12px;
     line-height:14px;
 }
+
+.page-template-sup_openings_page-php #content ul {
+  list-style-type: none;
+  margin: 20px 0 0;
+  padding: 0;
+}
+.page-template-sup_openings_page-php #content ul li {
+  border-bottom: 1px dashed #ccc;
+  margin-bottom: 20px;
+  padding: 0 0 20px;
+}
+
+/* support opening widget */
+.sup_openings-widget {
+  margin: 0;
+  padding: 20px 20px 0;
+  position: relative;
+}
+.sup_openings-widget .widget-title {
+  margin: 0;
+}
+.sup_openings-widget .widget-title a {
+  display: inline-block;
+  overflow: hidden;
+  transition: all 150ms ease-out;
+  width: 100%;
+}
+.sup_open_ico {
+  left: 50%;
+  margin-left: -34px;
+  overflow: hidden;
+  position: relative;
+  transition: all 150ms ease-out;
+  z-index: 5;
+}
+.sup_openings-widget .widget-title a:hover .sup_open_ico{
+	left:0;
+	margin-left:0;
+	transition: all 150ms ease-out;
+}
+.sup_openings-widget .widget-title a span {
+  display: inline-block;
+  left: -190px;
+  right:auto;
+  position: relative;
+  transition: all 200ms ease-out;
+  z-index: 1;
+}
+.sup_openings-widget .widget-title a:hover span{
+	left:auto;
+	right:0;
+	transition: all 200ms ease-out;
+}
+.page-template-sup_openings_page-php #content header:nth-child(n) h3.entry-title{
+	padding-top:40px;
+}
+
+.sup_openings-widget .cloth{
+    background:#ededed;
+    height:100px;
+    left:0;
+    position:absolute;
+    top:0;
+    width:80px;
+    z-index:3;
+}
