@@ -27,8 +27,8 @@ function city_meta_box_callback( $post ) {
 	echo '<label for="_field">';
 	_e( 'City', 'support_theme' );
 	echo '</label> ';
-	//echo '<input type="text" id="city_field" name="city_field" value="' . esc_attr( $value ) . '" size="25" />';
-	echo '<select id="city_field" name="city_field">';
+	echo '<input type="text" id="city_field" name="city_field" value="' . esc_attr( $value ) . '" size="25" />';
+	/*echo '<select id="city_field" name="city_field">';
 		echo '<option value="">choose city</option>';
 		if ($value == 'Nikolaev'){
 			echo '<option selected="selected" value="Nikolaev">Nikolaev</option>';
@@ -45,7 +45,7 @@ function city_meta_box_callback( $post ) {
 		} else {
 			echo '<option value="Lviv">Lviv</option>';
 		}
-	echo '</select>';
+	echo '</select>';*/
 }
 
 /**
@@ -566,3 +566,184 @@ function bonus_save_meta_box_data( $post_id ) {
 	update_post_meta( $post_id, 'bonus_field', $my_data );
 }
 add_action( 'save_post', 'bonus_save_meta_box_data' );
+
+
+
+/**
+ * Adds a box to the main column on the Post and Page edit screens.
+ */
+function language_add_meta_box() {
+	add_meta_box('language_field', __( 'Languages required', 'support_theme' ), 'language_meta_box_callback', 'sup_openings');
+}
+
+add_action( 'add_meta_boxes', 'language_add_meta_box' );
+
+/**
+ * Prints the box content.
+ * 
+ * @param WP_Post $post The object for the current post/page.
+ */
+function language_meta_box_callback( $post ) {
+
+	// Add an nonce field so we can check for it later.
+	wp_nonce_field( 'language_meta_box', 'language_meta_box_nonce' );
+
+	/*
+	 * Use get_post_meta() to retrieve an existing value
+	 * from the database and use the value for the form.
+	 */
+	$value = get_post_meta( $post->ID, 'language_field', true );
+
+	echo '<label for="_field">';
+	_e( 'Languages required', 'support_theme' );
+	echo '</label> ';
+	echo '<input type="text" id="language_field" name="language_field" value="' . esc_attr( $value ) . '" size="25" />';
+	
+}
+
+/**
+ * When the post is saved, saves our custom data.
+ *
+ * @param int $post_id The ID of the post being saved.
+ */
+function language_save_meta_box_data( $post_id ) {
+
+	/*
+	 * We need to verify this came from our screen and with proper authorization,
+	 * because the save_post action can be triggered at other times.
+	 */
+
+	// Check if our nonce is set.
+	if ( ! isset( $_POST['language_meta_box_nonce'] ) ) {
+		return;
+	}
+
+	// Verify that the nonce is valid.
+	if ( ! wp_verify_nonce( $_POST['language_meta_box_nonce'], 'language_meta_box' ) ) {
+		return;
+	}
+
+	// If this is an autosave, our form has not been submitted, so we don't want to do anything.
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+		return;
+	}
+
+	// Check the user's permissions.
+	if ( isset( $_POST['post_type'] ) && 'page' == $_POST['post_type'] ) {
+
+		if ( ! current_user_can( 'edit_page', $post_id ) ) {
+			return;
+		}
+
+	} else {
+
+		if ( ! current_user_can( 'edit_post', $post_id ) ) {
+			return;
+		}
+	}
+
+	/* OK, it's safe for us to save the data now. */
+	
+	// Make sure that it is set.
+	if ( ! isset( $_POST['language_field'] ) ) {
+		return;
+	}
+
+	// Sanitize user input.
+	$my_data = sanitize_text_field( $_POST['language_field'] );
+
+	// Update the meta field in the database.
+	update_post_meta( $post_id, 'language_field', $my_data );
+}
+add_action( 'save_post', 'language_save_meta_box_data' );
+
+
+
+
+/**
+ * Adds a box to the main column on the Post and Page edit screens.
+ */
+function number_needed_add_meta_box() {
+	add_meta_box('number_needed_field', __( 'Vacancies', 'support_theme' ), 'number_needed_meta_box_callback', 'sup_openings');
+}
+
+add_action( 'add_meta_boxes', 'number_needed_add_meta_box' );
+
+/**
+ * Prints the box content.
+ * 
+ * @param WP_Post $post The object for the current post/page.
+ */
+function number_needed_meta_box_callback( $post ) {
+
+	// Add an nonce field so we can check for it later.
+	wp_nonce_field( 'number_needed_meta_box', 'number_needed_meta_box_nonce' );
+
+	/*
+	 * Use get_post_meta() to retrieve an existing value
+	 * from the database and use the value for the form.
+	 */
+	$value = get_post_meta( $post->ID, 'number_needed_field', true );
+
+	echo '<label for="_field">';
+	_e( 'Vacancies', 'support_theme' );
+	echo '</label> ';
+	echo '<input type="text" id="number_needed_field" name="number_needed_field" value="' . esc_attr( $value ) . '" size="25" />';
+	
+}
+
+/**
+ * When the post is saved, saves our custom data.
+ *
+ * @param int $post_id The ID of the post being saved.
+ */
+function number_needed_save_meta_box_data( $post_id ) {
+
+	/*
+	 * We need to verify this came from our screen and with proper authorization,
+	 * because the save_post action can be triggered at other times.
+	 */
+
+	// Check if our nonce is set.
+	if ( ! isset( $_POST['number_needed_meta_box_nonce'] ) ) {
+		return;
+	}
+
+	// Verify that the nonce is valid.
+	if ( ! wp_verify_nonce( $_POST['number_needed_meta_box_nonce'], 'number_needed_meta_box' ) ) {
+		return;
+	}
+
+	// If this is an autosave, our form has not been submitted, so we don't want to do anything.
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+		return;
+	}
+
+	// Check the user's permissions.
+	if ( isset( $_POST['post_type'] ) && 'page' == $_POST['post_type'] ) {
+
+		if ( ! current_user_can( 'edit_page', $post_id ) ) {
+			return;
+		}
+
+	} else {
+
+		if ( ! current_user_can( 'edit_post', $post_id ) ) {
+			return;
+		}
+	}
+
+	/* OK, it's safe for us to save the data now. */
+	
+	// Make sure that it is set.
+	if ( ! isset( $_POST['number_needed_field'] ) ) {
+		return;
+	}
+
+	// Sanitize user input.
+	$my_data = sanitize_text_field( $_POST['number_needed_field'] );
+
+	// Update the meta field in the database.
+	update_post_meta( $post_id, 'number_needed_field', $my_data );
+}
+add_action( 'save_post', 'number_needed_save_meta_box_data' );

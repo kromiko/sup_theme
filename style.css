@@ -4023,10 +4023,6 @@ p.userhobby{
 	right:0;
 	transition: all 200ms ease-out;
 }
-.page-template-sup_openings_page-php #content header:nth-child(n) h3.entry-title{
-	padding-top:40px;
-}
-
 .sup_openings-widget .cloth{
     background:#ededed;
     height:100px;

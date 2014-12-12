@@ -151,7 +151,7 @@ jQuery(document).ready(function($){
 				duration:200,
 				easing:'swing'
 			});
-			jQuery('.sidebar .entry-header, .sidebar .entry-content, .sidebar .entry-summary, .sidebar footer.entry-meta').animate({
+			jQuery('.sidebar .entry-header, .sidebar .entry-content, .sidebar .entry-summary, .sidebar footer.entry-meta, .sidebar article.sup_openings > .entry-meta').animate({
 				paddingLeft:'50px'
 			}, {
 				duration:200,
@@ -171,7 +171,7 @@ jQuery(document).ready(function($){
 				duration:200,
 				easing:'swing'
 			});
-			jQuery('.sidebar .entry-header, .sidebar .entry-content, .sidebar .entry-summary, .sidebar footer.entry-meta').animate({
+			jQuery('.sidebar .entry-header, .sidebar .entry-content, .sidebar .entry-summary, .sidebar footer.entry-meta, .sidebar article.sup_openings > .entry-meta').animate({
 				paddingLeft:'340px'
 			}, {
 				duration:200,

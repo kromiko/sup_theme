@@ -27,7 +27,6 @@ get_header(); ?>
 				
 				// The Query
 				$query = new WP_Query( $args );?>
-				<ul>
 				<?php // The Loop
 				if ( $query->have_posts() ) {
 					while ( $query->have_posts() ) {
@@ -38,13 +37,14 @@ get_header(); ?>
 					$city = get_post_meta($post_id, 'city_field', true);
 					$gender = get_post_meta($post_id, 'gender_field', true);
 					$shift = get_post_meta($post_id, 'shift_field', true);
+					$language = get_post_meta($post_id, 'language_field', true);
+					$number_needed = get_post_meta($post_id, 'number_needed_field', true);
 					$reqs = get_post_meta($post_id, 'requirements_field', true);
 					$contacts = get_post_meta($post_id, 'contacts_field', true);
 					$bonus = get_post_meta($post_id, 'bonus_field', true);
 				?>
-				<?php /*<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>*/ ?>
+				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 					
-                    <li>
 						<header class="entry-header">
 						<h3 class="entry-title">
 							<?php the_title(); ?>
@@ -55,14 +55,14 @@ get_header(); ?>
 						</div>
 						<div class="entry-meta">
 							<?php
-								echo '<span class="itm"><strong>City:</strong> ' . $city . '</span><br /><span class="itm"><strong>Gender:</strong> ' . $gender . '</span><br /><span class="itm"><strong>Shift:</strong> ' . $shift . '</span><br /><span class="itm"><strong>Requirements:</strong> ' . $reqs . '</span><br /><span class="itm"><strong>Contacts:</strong> ' . $contacts . '</span><br /><span class="itm"><strong>Bonus:</strong> ' . $bonus . '</span>';
+								echo '<span class="itm"><strong>City:</strong> ' . $city . '</span><br /><span class="itm"><strong>Gender:</strong> ' . $gender . '</span><br /><span class="itm"><strong>Shift:</strong> ' . $shift . '</span><br /><span class="itm"><strong>Languages Needed:</strong> ' . $language . '</span><br /><span class="itm"><strong>Vacancies:</strong> ' . $number_needed . '</span><br /><span class="itm"><strong>Requirements:</strong> ' . $reqs . '</span><br /><span class="itm"><strong>Contacts:</strong> ' . $contacts . '</span><br /><span class="itm"><strong>Bonus:</strong> ' . $bonus . '</span>';
 							?>
 						</div>
 						<footer class="entry-meta">
 							<?php edit_post_link( __( 'Edit', 'twentythirteen' ), '<span class="edit-link">', '</span>' ); ?>
 						</footer><!-- .entry-meta -->
-                    </li>
 
+				</article>
 			<?php }
 				} else { ?>
                 <?php // no posts found ?>
@@ -71,7 +71,6 @@ get_header(); ?>
 				// Restore original Post Data
 				wp_reset_postdata();
 			?>
-            </ul>
 
 		</div><!-- #content -->
 	</div><!-- #primary -->
