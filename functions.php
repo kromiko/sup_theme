@@ -182,6 +182,8 @@ add_action( 'wp_enqueue_scripts', 'twentythirteen_scripts_styles' );
 function twentythirteen_admin_scripts_styles() {
 	wp_enqueue_script('user-raiting', get_template_directory_uri() . '/js/user-raiting.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-datepicker' ));
 	wp_enqueue_style( 'user-raiting', '//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css', array(), '2014-10-31' );
+	wp_enqueue_script('support_brainstorming_post', get_template_directory_uri() . '/js/sup_brainstorm.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-datepicker' ));
+	wp_enqueue_style('support_brainstorming_post', get_template_directory_uri() . '/css/sup_brainstorm.css');
 }
 add_action( 'admin_enqueue_scripts', 'twentythirteen_admin_scripts_styles' );
 /**
@@ -662,6 +664,38 @@ function my_post_type_sup_openings() {
 }
 add_action('init', 'my_post_type_sup_openings');
 
+// support brainstorming custom post type
+function my_post_type_sup_brainstorm() {
+	register_post_type( 'sup_brainstorm',
+                array( 
+				'label' => __('Support Brainstorming'), 
+				'singular_label' => __('Support Brainstorming item', 'support_theme'),
+				'_builtin' => false,
+				'capability_type' => 'post',
+				'public' => true,
+				'publicly_queryable' => true, 
+				'show_ui' => true,
+				'show_in_nav_menus' => true,
+				'show_in_menu' => true,
+				'show_in_admin_bar' => true,
+				'hierarchical' => true,
+				'rewrite' => array(
+					'slug' => 'sup-opening',
+					'with_front' => FALSE,
+				),
+				'menu_icon' => 'dashicons-schedule',
+				'supports' => array(
+						'title',
+						'editor',
+						'author',
+						'comments'
+					)
+				) 
+	);
+	register_taxonomy('sup_brainstorm_category', 'sup_brainstorm', array('hierarchical' => true, 'label' => 'Support Brainstorming Categories', 'singular_name' => 'Support Brainstorming Category', 'rewrite' => true, 'query_var' => true));
+}
+add_action('init', 'my_post_type_sup_brainstorm');
+
 //time of day
 function time_of_day($content) {
    //$pdate = strtotime($content);
@@ -769,6 +803,9 @@ include_once get_template_directory() . '/inc/useful_links-meta.php';
 
 /* sup_openings post custom meta boxes */
 include_once get_template_directory() . '/inc/support_openings-meta.php';
+
+/* sup_brainstorm post custom meta boxes */
+include_once get_template_directory() . '/inc/sup_brainstorm-meta.php';
 
 /* registering widgets */
 include_once get_template_directory() . '/inc/register-widgets.php';

@@ -22,10 +22,8 @@
 			<?php twentythirteen_entry_meta(); ?>
 			<?php edit_post_link( __( 'Edit', 'twentythirteen' ), '<span class="edit-link">', '</span>' ); ?>
 		</div><!-- .entry-meta -->
-		<?php //if(function_exists('the_ratings')) { the_ratings(); } ?>
         <div class="karma_block">
-			<a class="karma plus"><i class="fa fa-thumbs-up"></i></a><span class="karma_val"><?php if(function_exists('karma_results_display')) { echo karma_results_display(get_the_ID()); } ?></span><a class="karma minus"><i class="fa fa-thumbs-down"></i>
-</a>
+			<a class="karma plus"><i class="fa fa-thumbs-up"></i></a><span class="karma_val"><?php if(function_exists('karma_results_display')) { echo karma_results_display(get_the_ID()); } ?></span><a class="karma minus"><i class="fa fa-thumbs-down"></i></a>
 			<div class="msg"></div>
         </div>
         <div class="fav_post"><?php wpfp_link(); ?></div>
@@ -55,9 +53,6 @@
 			</div><!-- .comments-link -->
 		<?php endif; // comments_open() ?>
 
-		<?php //if ( is_single() && get_the_author_meta( 'description' ) && is_multi_author() ) : ?>
-			<?php //get_template_part( 'author-bio' ); ?>
-		<?php //endif; ?>
 	</footer><!-- .entry-meta -->
 </article><!-- #post -->
 <script type="text/javascript">

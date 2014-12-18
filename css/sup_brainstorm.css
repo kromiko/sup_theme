@@ -1,0 +1,23 @@
+#coautor_field{
+  min-height:185px;
+  min-width:120px;
+}
+.post-type-sup_brainstorm .status{
+  margin-left:15px;
+}
+.post-type-sup_brainstorm em.note{
+	margin-left:20px;
+}
+
+.post-type-sup_brainstorm input.status[value="Rejected"]{
+	margin-left:60px;
+}
+.post-type-sup_brainstorm input.status[value="In Progress"]{
+	margin-left:0;
+}
+.post-type-sup_brainstorm .or{
+	margin:0 10px;
+}
+.post-type-sup_brainstorm input.status[value="Finished"], span.finished{
+	display:none;
+}
