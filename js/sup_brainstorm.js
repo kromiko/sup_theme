@@ -1,5 +1,5 @@
 jQuery(function(){
-	if ((jQuery('.post-type-sup_brainstorm input.status[value="In Progress"]:checked')) || (jQuery('.post-type-sup_brainstorm input.status[value="Finished"]:checked'))){
+	if ((jQuery('.post-type-sup_brainstorm input.status[value="In Progress"]').is(':checked')) || (jQuery('.post-type-sup_brainstorm input.status[value="Finished"]').is(':checked'))){
 		jQuery('.post-type-sup_brainstorm input.status[value="Finished"], span.finished').css('display', 'inline');
 	}
 	jQuery('.post-type-sup_brainstorm input.status[value="In Progress"]').click(function(){

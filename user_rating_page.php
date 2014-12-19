@@ -319,62 +319,62 @@ get_header(); ?>
 			?> 
 				<div class="rank">
 					<div class="twelve">
-						<div class="label"><span class="rank_value"><?php echo __( '12', 'twentythirteen' ); ?></span><span class="rank_name"><?php echo __( 'magician', 'twentythirteen' ); ?></span></div>
+						<div class="rank_label"><span class="rank_value"><?php echo __( '12', 'twentythirteen' ); ?></span><span class="rank_name"><?php echo __( 'magician', 'twentythirteen' ); ?></span></div>
 						<?php display_user_rank('15', $ranked_user_ids); ?>
 						<div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div>
 					</div>
-					<div class="eleven"><div class="label"><span class="rank_value"><?php echo __( '11', 'twentythirteen' ); ?></span><span class="rank_name"><?php echo __( 'the legend', 'twentythirteen' ); ?></span></div>
+					<div class="eleven"><div class="rank_label"><span class="rank_value"><?php echo __( '11', 'twentythirteen' ); ?></span><span class="rank_name"><?php echo __( 'the legend', 'twentythirteen' ); ?></span></div>
 						<?php display_user_rank('14', $ranked_user_ids); ?>
 						<div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div>
 					</div>
-					<div class="ten"><div class="label"><span class="rank_value"><?php echo __( '10', 'twentythirteen' ); ?></span><span class="rank_name"><?php echo __( 'star<br />technician', 'twentythirteen' ); ?></span></div>
+					<div class="ten"><div class="rank_label"><span class="rank_value"><?php echo __( '10', 'twentythirteen' ); ?></span><span class="rank_name"><?php echo __( 'star<br />technician', 'twentythirteen' ); ?></span></div>
 						<?php display_user_rank('13', $ranked_user_ids); ?>
 						<div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div>
 					</div>
-					<div class="nine"><div class="label"><span class="rank_value"><?php echo __( '9', 'twentythirteen' ); ?></span><span class="rank_name"><?php echo __( 'grand-<br />master', 'twentythirteen' ); ?></span></div>
+					<div class="nine"><div class="rank_label"><span class="rank_value"><?php echo __( '9', 'twentythirteen' ); ?></span><span class="rank_name"><?php echo __( 'grand-<br />master', 'twentythirteen' ); ?></span></div>
 						<?php display_user_rank('12', $ranked_user_ids); ?>
 						<div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div>
 					</div>
-					<div class="eight"><div class="label"><span class="rank_value"><?php echo __( '8', 'twentythirteen' ); ?></span><span class="rank_name"><?php echo __( 'master', 'twentythirteen' ); ?></span></div>
+					<div class="eight"><div class="rank_label"><span class="rank_value"><?php echo __( '8', 'twentythirteen' ); ?></span><span class="rank_name"><?php echo __( 'master', 'twentythirteen' ); ?></span></div>
 						<?php display_user_rank('11', $ranked_user_ids); ?>
 						<div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div>
 					</div>
-					<div class="seven"><div class="label"><span class="rank_value"><?php echo __( '7', 'twentythirteen' ); ?></span><span class="rank_name"><?php echo __( 'guru', 'twentythirteen' ); ?></span></div>
+					<div class="seven"><div class="rank_label"><span class="rank_value"><?php echo __( '7', 'twentythirteen' ); ?></span><span class="rank_name"><?php echo __( 'guru', 'twentythirteen' ); ?></span></div>
 						<?php display_user_rank('10', $ranked_user_ids); ?>
 						<div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div>
 					</div>
-					<div class="six"><div class="label"><span class="rank_value"><?php echo __( '6', 'twentythirteen' ); ?></span><span class="rank_name"><?php echo __( 'expert', 'twentythirteen' ); ?></span></div>
+					<div class="six"><div class="rank_label"><span class="rank_value"><?php echo __( '6', 'twentythirteen' ); ?></span><span class="rank_name"><?php echo __( 'expert', 'twentythirteen' ); ?></span></div>
 						<?php display_user_rank('9', $ranked_user_ids); ?>
 						<div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div>
 					</div>
-					<div class="five"><div class="label"><span class="rank_value"><?php echo __( '5', 'twentythirteen' ); ?></span><span class="rank_name"><?php echo __( 'leading<br />technician', 'twentythirteen' ); ?></span></div>
+					<div class="five"><div class="rank_label"><span class="rank_value"><?php echo __( '5', 'twentythirteen' ); ?></span><span class="rank_name"><?php echo __( 'leading<br />technician', 'twentythirteen' ); ?></span></div>
 						<?php display_user_rank('8', $ranked_user_ids); ?>
 						<div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div>
 					</div>
-					<div class="four"><div class="label"><span class="rank_value"><?php echo __( '4', 'twentythirteen' ); ?></span><span class="rank_name"><?php echo __( 'senior<br />technician', 'twentythirteen' ); ?></span></div>
+					<div class="four"><div class="rank_label"><span class="rank_value"><?php echo __( '4', 'twentythirteen' ); ?></span><span class="rank_name"><?php echo __( 'senior<br />technician', 'twentythirteen' ); ?></span></div>
 						<?php display_user_rank('7', $ranked_user_ids); ?>
 						<div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div>
 					</div>
-					<div class="three"><div class="label"><span class="rank_value"><?php echo __( '3', 'twentythirteen' ); ?></span><span class="rank_name"><?php echo __( 'junior<br />technician', 'twentythirteen' ); ?></span></div>
+					<div class="three"><div class="rank_label"><span class="rank_value"><?php echo __( '3', 'twentythirteen' ); ?></span><span class="rank_name"><?php echo __( 'junior<br />technician', 'twentythirteen' ); ?></span></div>
 						<?php display_user_rank('6', $ranked_user_ids); ?>
 						<div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div>
 					</div>
-					<div class="two"><div class="label"><span class="rank_value"><?php echo __( '2', 'twentythirteen' ); ?></span><span class="rank_name"><?php echo __( 'sophomore', 'twentythirteen' ); ?></span></div>
+					<div class="two"><div class="rank_label"><span class="rank_value"><?php echo __( '2', 'twentythirteen' ); ?></span><span class="rank_name"><?php echo __( 'sophomore', 'twentythirteen' ); ?></span></div>
 						<?php display_user_rank('5', $ranked_user_ids); ?>
 						<div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div>
 					</div>
-					<div class="one"><div class="label"><span class="rank_value"><?php echo __( '1', 'twentythirteen' ); ?></span><span class="rank_name"><?php echo __( 'follower', 'twentythirteen' ); ?></span></div>
+					<div class="one"><div class="rank_label"><span class="rank_value"><?php echo __( '1', 'twentythirteen' ); ?></span><span class="rank_name"><?php echo __( 'follower', 'twentythirteen' ); ?></span></div>
 						<?php display_user_rank('4', $ranked_user_ids); ?>
 						<div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div>
 					</div>
-					<div class="apprentice"><div class="label"><span class="rank_value"></span><span class="rank_name"><?php echo __( 'apprentice', 'twentythirteen' ); ?></span></div>
+					<div class="apprentice"><div class="rank_label"><span class="rank_value"></span><span class="rank_name"><?php echo __( 'apprentice', 'twentythirteen' ); ?></span></div>
 						<?php display_user_rank('3', $ranked_user_ids); ?>
 						<div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div><div class="month"></div>
 					</div>
-					<div class="neophyte"><div class="label"><span class="rank_value"></span><span class="rank_name"><?php echo __( 'neophyte', 'twentythirteen' ); ?></span></div>
+					<div class="neophyte"><div class="rank_label"><span class="rank_value"></span><span class="rank_name"><?php echo __( 'neophyte', 'twentythirteen' ); ?></span></div>
 						<?php display_user_rank('2', $ranked_user_ids); ?>
 					</div>
-					<div class="novice"><div class="label"><span class="rank_value"></span><span class="rank_name"><?php echo __( 'novice', 'twentythirteen' ); ?></span></div>
+					<div class="novice"><div class="rank_label"><span class="rank_value"></span><span class="rank_name"><?php echo __( 'novice', 'twentythirteen' ); ?></span></div>
 						<?php display_user_rank('1', $ranked_user_ids); ?>
 					</div>
 				</div>
