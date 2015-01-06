@@ -394,7 +394,7 @@ function solution_save_meta_box_data( $post_id ) {
 	}
 
 	// Sanitize user input.
-	$my_data = $_POST['solution_field'];
+	$my_data = wpautop($_POST['solution_field']);
 
 	// Update the meta field in the database.
 	update_post_meta( $post_id, 'solution_field', $my_data );

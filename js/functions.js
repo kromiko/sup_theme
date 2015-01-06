@@ -180,3 +180,22 @@ jQuery(document).ready(function($){
 		}
 	});
 });
+
+/* I've read button */
+function readHelper(usrID, postID){
+	var data = {
+		action: 'update_read_user_meta',
+		post_id: postID,
+		user_id: usrID
+	};
+	jQuery.ajax({
+		url: karmaAjax.ajaxurl,
+		type: "POST",
+		data: data,
+		success: function(msg){
+			if (msg.message == 'success'){
+				jQuery('#mark_read').css('display','none');
+			}
+		}
+	});
+}

@@ -21,3 +21,8 @@
 .post-type-sup_brainstorm input.status[value="Finished"], span.finished{
 	display:none;
 }
+
+/* post read_meta styles */
+.hidden_checkbox{
+	visibility:hidden;
+}

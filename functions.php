@@ -696,6 +696,7 @@ function my_post_type_sup_brainstorm() {
 }
 add_action('init', 'my_post_type_sup_brainstorm');
 
+
 //time of day
 function time_of_day($content) {
    //$pdate = strtotime($content);
@@ -797,6 +798,9 @@ function twentythirteen_add_style() {
     wp_enqueue_style( 'prettyPhoto' );
 }
 add_action( 'wp_enqueue_scripts', 'twentythirteen_add_style' );
+
+/* post custom meta boxes */
+include_once get_template_directory() . '/inc/read-meta.php';
 
 /* useful_links post custom meta boxes */
 include_once get_template_directory() . '/inc/useful_links-meta.php';
@@ -1411,4 +1415,36 @@ function do_rem_rank(){
 		}
 		wp_send_json($return);
 	}
+}
+
+/* ajax action for I've read button */
+add_action( 'wp_ajax_update_read_user_meta', 'do_update_read_user_meta' );
+
+function do_update_read_user_meta(){
+	$post_id = $_POST['post_id'];
+	$user_id = $_POST['user_id'];
+	
+	global $current_user;
+	get_currentuserinfo();
+	$uname = $current_user->display_name;
+	
+	$users_post_meta = get_post_meta($post_id, '_read_users', true);
+	if ($users_post_meta){
+		$meta_value = $users_post_meta . ', ' . $uname;
+		update_post_meta($post_id, '_read_users', $meta_value);
+	} else {
+		update_post_meta($post_id, '_read_users', $uname);
+	}
+	
+	$cur_user_meta = get_user_meta($user_id, '_read_post', true);
+	if ($cur_user_meta){
+		$post_id = $post_id . ', ' . $cur_user_meta;
+		update_user_meta( $user_id, '_read_post', $post_id );
+	} else {
+		update_user_meta( $user_id, '_read_post', $post_id );
+	}
+	$return = array(
+		'message' => 'success'
+	);
+	wp_send_json($return);
 }

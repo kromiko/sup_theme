@@ -42,6 +42,32 @@
 	<?php endif; ?>
 	<div class="entry-content">
 		<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentythirteen' ) ); ?>
+		<?php
+			$value = get_post_meta( get_the_ID(), 'important_field', true );
+			if ($value == 'mustread'){
+				if (is_single()){
+					if (is_user_logged_in()){
+						$read_posts = get_user_meta(get_current_user_id(), '_read_post', true);
+						$read_posts_arr = explode(", ", $read_posts);
+						if (!in_array((string)get_the_ID(), $read_posts_arr, true)){
+							echo '<input type="submit" value="I\'ve Read" class="submit" id="mark_read" name="mark_read" />';
+						}
+					} else {
+						echo '<input type="submit" value="Login to mark the post as Read" class="submit" id="mark_read" name="mark_read" />';
+					}
+				} else {
+					if (is_user_logged_in()){
+						$read_posts1 = get_user_meta(get_current_user_id(), '_read_post', true);
+						$read_posts_arr1 = explode(", ", $read_posts1);
+						if (!in_array((string)get_the_ID(), $read_posts_arr1, true)){
+							echo '<strong>IMPORTANT POST</strong>';
+						}
+					} else {
+						echo '<strong>IMPORTANT POST</strong>';
+					}
+				}
+			}
+		?>
 		<?php wp_link_pages( array( 'before' => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentythirteen' ) . '</span>', 'after' => '</div>', 'link_before' => '<span>', 'link_after' => '</span>' ) ); ?>
 	</div><!-- .entry-content -->
 	<?php endif; ?>
@@ -56,6 +82,17 @@
 	</footer><!-- .entry-meta -->
 </article><!-- #post -->
 <script type="text/javascript">
+<?php if (($value == 'mustread') && (is_single())) { ?>
+<?php if (is_user_logged_in()) { ?>
+jQuery('#mark_read').click(function(){
+	readHelper(<?php echo get_current_user_id(); ?>, <?php echo get_the_ID(); ?>);
+});
+<?php } else { ?>
+jQuery('#mark_read').click(function(){
+	window.location.replace("<?php echo wp_login_url( get_permalink() ); ?>");
+});
+<?php } ?>
+<?php } ?>
 jQuery('#post-<?php the_ID(); ?> .karma').click(function() {
 	var direction;
 	if (jQuery(this).hasClass("minus")){
