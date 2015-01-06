@@ -4222,3 +4222,8 @@ input.onehundred.reject:checked ~ .progress > .progress-bar{
 #recent-posts-2 {
 	padding-top: 10px;
 }
+
+a.important_msg {
+  display: inline-block;
+  margin: 0 0 10px;
+}

@@ -60,10 +60,10 @@
 						$read_posts1 = get_user_meta(get_current_user_id(), '_read_post', true);
 						$read_posts_arr1 = explode(", ", $read_posts1);
 						if (!in_array((string)get_the_ID(), $read_posts_arr1, true)){
-							echo '<strong>IMPORTANT POST</strong>';
+							echo '<a class="important_msg" href="' . get_the_permalink() . '"><strong>This post is important, so please read it carefully!</strong></a>';
 						}
 					} else {
-						echo '<strong>IMPORTANT POST</strong>';
+						echo '<a class="important_msg" href="' . get_the_permalink() . '"><strong>This post is important, so please read it carefully!</strong></a>';
 					}
 				}
 			}
