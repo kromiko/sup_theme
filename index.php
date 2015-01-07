@@ -49,8 +49,17 @@ get_header(); ?>
 							get_template_part( 'content', get_post_format($post_id) );
 						}
 					}
-					wp_reset_postdata();
 				}
+				wp_reset_postdata();
+			
+			// Normally the page number URL parameter should be 'paged' but I've also seen 'page' lately, so..
+			$currentPage = get_query_var( 'page' ) ? (int) get_query_var( 'page' ) : null;
+
+			if( $currentPage == null ) {
+			  $currentPage = get_query_var( 'paged' ) ? (int) get_query_var( 'paged' ) : 1;
+			}
+			
+			$currentPage = abs( $currentPage );
 			
 			if (is_user_logged_in()){
 				$user_read_posts = get_user_meta(get_current_user_id(), '_read_post', true);
@@ -60,7 +69,9 @@ get_header(); ?>
 					'post_status' => 'publish',
 					'post__not_in' => $posts_to_exclude,
 					'order'       => 'DESC',
-					'orderby'     => 'date'
+					'orderby'     => 'date',
+					'posts_per_page' => 20,
+					'paged'		  => $currentPage
 				);
 			} else {
 				$args1 = array (
@@ -72,20 +83,24 @@ get_header(); ?>
 						),
 					),
 					'order'       => 'DESC',
-					'orderby'     => 'date'
+					'orderby'     => 'date',
+					'posts_per_page' => 20,
+					'paged'		  => $currentPage
 				);
 			}
-			$query1 = new WP_Query( $args1 );
-			if ( $query1->have_posts() ) {
-					while ( $query1->have_posts() ) {
-						$query1->the_post();
-						$post_id1 = $query1->post->ID;
+			$wp_query = new WP_Query( $args1 );
+			if ( $wp_query->have_posts() ) {
+					while ( $wp_query->have_posts() ) {
+						$wp_query->the_post();
+						$post_id1 = $wp_query->post->ID;
 						get_template_part( 'content', get_post_format($post_id1) );
 					}
-					wp_reset_postdata();
 				}
 			
-				twentythirteen_paging_nav(); ?>
+			twentythirteen_paging_nav();
+			
+			wp_reset_postdata();
+		?>
 
 		<?php// } else { ?>
 			<?php// get_template_part( 'content', 'none' ); ?>
