@@ -6,9 +6,22 @@
  * @subpackage Twenty_Thirteen
  * @since Twenty Thirteen 1.0
  */
-?>
-
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+$value = get_post_meta( get_the_ID(), 'important_field', true );
+if ($value == 'mustread'){
+	if (is_user_logged_in()){
+		$read_posts = get_user_meta(get_current_user_id(), '_read_post', true);
+		$read_posts_arr = explode(", ", $read_posts);
+		if (!in_array((string)get_the_ID(), $read_posts_arr, true)){ ?>
+			<article id="post-<?php the_ID(); ?>" <?php post_class('must_read'); ?>>
+		<?php } else { ?>
+			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+		<?php }
+	} else { ?>
+		<article id="post-<?php the_ID(); ?>" <?php post_class('must_read'); ?>>
+	<?php }
+} else { ?>
+	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<?php } ?>
 	<header class="entry-header">
 		<?php if ( is_single() ) : ?>
 		<h1 class="entry-title"><?php the_title(); ?></h1>
@@ -43,12 +56,21 @@
 	<div class="entry-content">
 		<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentythirteen' ) ); ?>
 		<?php
-			$value = get_post_meta( get_the_ID(), 'important_field', true );
 			if ($value == 'mustread'){
 				if (is_single()){
+					$read_users = get_post_meta(get_the_ID(), '_read_users', true);
+					$all_users = my_group_listing('Group 1');
+					$read_users_arr = explode(", ", $read_users);
+					$not_read = array_diff($all_users,$read_users_arr);
+					$not_read_string = implode(", ", $not_read);
+					if ($not_read){
+						echo '<p class="nonread"><label>';
+						_e( 'Not read the post: ', 'support_theme' );
+						echo '</label> ';
+						echo $not_read_string;
+						echo '</p>';
+					}
 					if (is_user_logged_in()){
-						$read_posts = get_user_meta(get_current_user_id(), '_read_post', true);
-						$read_posts_arr = explode(", ", $read_posts);
 						if (!in_array((string)get_the_ID(), $read_posts_arr, true)){
 							echo '<input type="submit" value="I\'ve Read" class="submit" id="mark_read" name="mark_read" />';
 						}

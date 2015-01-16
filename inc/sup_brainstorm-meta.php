@@ -292,7 +292,6 @@ function coautor_save_meta_box_data( $post_id ) {
 	}
 
 	// Sanitize user input.
-	//$my_data = sanitize_text_field( $_POST['coautor_field'] );
 	$my_data = $_POST['coautor_field'];
 
 	// Update the meta field in the database.
@@ -333,16 +332,11 @@ function solution_meta_box_callback( $post ) {
 		$content = '';
 	}
 
-	//echo '<label for="_field">';
-	//_e( 'Solution', 'support_theme' );
-	//echo '</label> ';
-	//echo '<textarea name="solution_field"></textarea>';
 	$settings = array(
 		'textarea_name' => 'solution_field',
 		'textarea_rows' => 5
 	);
 	wp_editor( $content, 'solutionfield', $settings);
-	//echo '<input type="text" id="solution_field_input" name="solution_field" value="' . esc_attr( $value ) . '" size="15" />';
 }
 
 /**

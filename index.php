@@ -19,7 +19,6 @@ get_header(); ?>
 
 	<div id="primary" class="content-area">
 		<div id="content" class="site-content" role="main">
-		
 		<?php
 			// WP_Query arguments
 			$args = array (
@@ -52,7 +51,6 @@ get_header(); ?>
 				}
 				wp_reset_postdata();
 			
-			// Normally the page number URL parameter should be 'paged' but I've also seen 'page' lately, so..
 			$currentPage = get_query_var( 'page' ) ? (int) get_query_var( 'page' ) : null;
 
 			if( $currentPage == null ) {
@@ -101,10 +99,6 @@ get_header(); ?>
 			
 			wp_reset_postdata();
 		?>
-
-		<?php// } else { ?>
-			<?php// get_template_part( 'content', 'none' ); ?>
-		<?php// } ?>
 
 		</div><!-- #content -->
 	</div><!-- #primary -->

@@ -50,7 +50,7 @@ get_header(); ?>
 								<input type="text" name="useremail" id="useremail" value="<?php echo $current_user->user_email; ?>" /></p>
 								<p><label for="userfirstname"><?php echo __( 'User first name', 'twentythirteen' ); ?></label>
 								<input type="text" name="userfirstname" id="userfirstname" value="<?php echo $current_user->user_firstname; ?>" /></p>
-								<p><label for="userlastname"><?php echo __( 'User last options', 'twentythirteen' ); ?></label>
+								<p><label for="userlastname"><?php echo __( 'User last name', 'twentythirteen' ); ?></label>
 								<input type="text" name="userlastname" id="userlastname" value="<?php echo $current_user->user_lastname; ?>" /></p>
 								<p><label for="userdisplayname"><?php echo __( 'User display name', 'twentythirteen' ); ?></label>
 								<input type="text" name="userdisplayname" id="userdisplayname" value="<?php echo $current_user->display_name; ?>" /></p>

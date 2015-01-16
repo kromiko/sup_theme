@@ -37,22 +37,11 @@ get_header(); ?>
 				<?php
 					$link_url = get_post_meta($post_id, 'link_field', true);
 				?>
-				<?php /*<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>*/ ?>
-					
-					<?php /*<div class="entry-content">*/ ?>
                     <li>
-						<?php /*?><?php if ( $link_url ) { ?>
-                            <a href="<?php echo $link_url; ?>" title="<?php the_title(); ?>" target="_blank">
-                        <?php } ?>
-                                <?php the_title(); ?>
-                        <?php if ( $link_url ) { ?>
-                            </a>
-						<?php } ?><?php */?>
                             <a href="<?php if ($link_url) { echo $link_url; } else { echo get_permalink($post->ID); } ?>" title="<?php the_title(); ?>" target="_blank">
                                 <?php the_title(); ?>
                             </a>
                     </li>
-					<?php /*</div><!-- .entry-content -->*/ ?>
 
 					<footer class="entry-meta">
 						<?php edit_post_link( __( 'Edit', 'twentythirteen' ), '<span class="edit-link">', '</span>' ); ?>
@@ -61,7 +50,6 @@ get_header(); ?>
 
 			<?php }
 				} else { ?>
-                <?php // no posts found ?>
 			<?php } ?>
             <?php 
 				// Restore original Post Data

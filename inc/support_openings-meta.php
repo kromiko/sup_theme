@@ -28,24 +28,6 @@ function city_meta_box_callback( $post ) {
 	_e( 'City', 'support_theme' );
 	echo '</label> ';
 	echo '<input type="text" id="city_field" name="city_field" value="' . esc_attr( $value ) . '" size="25" />';
-	/*echo '<select id="city_field" name="city_field">';
-		echo '<option value="">choose city</option>';
-		if ($value == 'Nikolaev'){
-			echo '<option selected="selected" value="Nikolaev">Nikolaev</option>';
-		} else {
-			echo '<option value="Nikolaev">Nikolaev</option>';
-		}
-		if ($value == 'Kherson'){
-			echo '<option selected="selected" value="Kherson">Kherson</option>';
-		} else {
-			echo '<option value="Kherson">Kherson</option>';
-		}
-		if ($value == 'Lviv'){
-			echo '<option selected="selected" value="Lviv">Lviv</option>';
-		} else {
-			echo '<option value="Lviv">Lviv</option>';
-		}
-	echo '</select>';*/
 }
 
 /**

@@ -11,10 +11,8 @@ class Tickets_RMS extends WP_Widget {
 	{			
 		$curdir = getcwd();
 		chdir($forum_root);
-		//require_once($forum_root . 'global.php');
 		require_once('./wp_recent_threads_direct_mysql.php');
 		require_once('./wp_get_threads_content_direct_mysql.php');
-		//chdir($curdir);
 	}
 	
 	public function __construct() {
@@ -35,14 +33,11 @@ class Tickets_RMS extends WP_Widget {
 	
 	function widget ($args,$instance) {
 		$this->connect_files($this->root);
-		//extract($args);
 		$numberposts = $instance['numberposts'];
 		$title=$instance['title'];
 		$forum_root=$instance['forum_root'];
-		//$forumid = $instance['forumid'];
 		$forumname = $instance['forumname'];
         
-		//$forum_url=$vbulletin->options['bburl'];			
         //Begin Thread Counts
         $toutput = get_last_threads($forumname, $numberposts);
         

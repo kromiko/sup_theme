@@ -60,29 +60,10 @@
 				</nav><!-- #site-navigation -->
 			</div><!-- #navbar -->
             
-            <div id="crs-stats-container"></div>
 		</header><!-- #masthead -->
 
-        <?php
-        if( is_home() ){
-            $crs_loader_img = '<img src="' . get_template_directory_uri() . '/images/prettyPhoto/default/loader.gif" alt="" />';
-        ?>
-            <script>
-                jQuery(document).ready(function(){
-                    var crs_loader = '<div style="margin: 63px 0; font-size: 18px;"><?php echo $crs_loader_img; ?> Loading CRS statistics. Please, be patient...</div>';
-                    
-                    var request = jQuery.ajax({
-                        type: 'GET',
-                        url: '<?php echo esc_url( home_url('/') );?>crs_api_test.php',
-                        beforeSend: function(){
-                            jQuery('#crs-stats-container').html(crs_loader);
-                        }
-                    });
-                    request.done(function( msg ) {
-                        jQuery('#crs-stats-container').html(msg);
-                    });
-                });
-            </script>
-        <?php } ?>
+		<?php if(is_home()){
+			get_sidebar( 'header_area' );
+		} ?>
 
 		<div id="main" class="site-main">

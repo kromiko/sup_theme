@@ -102,7 +102,6 @@ button,
 input,
 select,
 textarea {
-	/*font-family: "Source Sans Pro", Helvetica, sans-serif;*/
 	font-family:Arial, Helvetica, sans-serif;
 }
 
@@ -798,7 +797,7 @@ img.wp-smiley,
 	display: block;
 	margin: 0 auto;
 	max-width: 1899px;
-	min-height: 150px;
+	min-height: 95px;
 	padding: 0 20px;
 	text-decoration: none;
 	width: 100%;
@@ -809,15 +808,15 @@ img.wp-smiley,
 }
 
 .site-title {
-	font-size: 60px;
+	font-size: 45px;
 	font-weight: bold;
 	line-height: 1;
 	margin: 0;
-	padding: 25px 0 10px;
+	padding: 10px 0 0;
 }
 
 .site-description {
-	font: 300 italic 24px "Source Sans Pro", Helvetica, sans-serif;
+	font: 300 italic 20px "Source Sans Pro", Helvetica, sans-serif;
 	margin: 0;
 }
 
@@ -925,35 +924,20 @@ ul.nav-menu li:hover > ul,
 }
 
 .site-header .search-field {
-	/*background-color: transparent;*/
 	background-color:#ffffff;
 	background-image: url(images/search-icon.png);
 	background-position: 5px center;
 	background-repeat: no-repeat;
 	background-size: 24px 24px;
-	/*border: none;*/
 	border: 2px solid #c3c0ab;
-	/*cursor: pointer;*/
 	cursor:text;
 	height: 37px;
 	margin: 3px 0;
 	outline:0;
 	padding: 0 0 0 34px;
 	position: relative;
-	/*-webkit-transition: width 400ms ease, background 400ms ease;
-	transition:         width 400ms ease, background 400ms ease;
-	width: 0;*/
 	width:230px;
 }
-
-/*.site-header .search-field:focus {
-	background-color: #fff;
-	border: 2px solid #c3c0ab;
-	cursor: text;
-	outline: 0;
-	width: 230px;
-}*/
-
 
 /**
  * 5.0 Content
@@ -1056,22 +1040,12 @@ ul.nav-menu li:hover > ul,
 	margin-right: 2px;
 }
 
-/*.entry-meta .date a:before {
-	content: "\f303";
-}*/
-
 .comments-link a:before {
 	content: "\f300";
 	margin-right: 2px;
 	position: relative;
 	top: -1px;
 }
-
-/*.entry-meta .author a:before {
-	content: "\f304";
-	position: relative;
-	top: -1px;
-}*/
 
 .categories-links a:first-child:before {
 	content: "\f301";
@@ -2641,10 +2615,6 @@ a.more-link {
 	.image-navigation .nav-next {
 		position: static;
 	}
-
-	.site-main .widget-area {
-		/*margin-right: 60px;*/
-	}
 }
 
 @media (max-width: 999px) {
@@ -3423,17 +3393,8 @@ a.external_site:after {
 }
 
 
-/*
-    CRS Statistics
-*/
-    #crs-stats-container{
-        position: absolute;
-        right: 12%;
-        top: 0;
-    }
-
+/* CRS Statistics */
     #crs-stats-container .tabs-menu {
-        height: 19px;
         clear: both;
         list-style: none;
         margin: 0;
@@ -3441,14 +3402,11 @@ a.external_site:after {
     }
 
     #crs-stats-container .tabs-menu li {
-        height: 19px;
-        line-height: 18px;
+        line-height: 19px;
         float: left;
         margin-left: 10px;
         background-color: #A3A3A3;
-        /*border-top: 1px solid #D4D4D1;
-        border-right: 1px solid #D4D4D1;
-        border-left: 1px solid #D4D4D1;*/
+		padding:0;
     }
     
     #crs-stats-container .tabs-menu li:first-child{
@@ -3458,7 +3416,6 @@ a.external_site:after {
     #crs-stats-container .tabs-menu li.current {
         position: relative;
         background-color: #fff;
-        border-bottom: 1px solid #fff;
         z-index: 5;
     }
 
@@ -3475,10 +3432,8 @@ a.external_site:after {
     }
 
     #crs-stats-container .tab {
-        /*border: 1px solid #d4d4d1;*/
-        /*background-color: #fff;*/
         float: left;
-        margin-bottom: 20px;
+        margin-bottom: 5px;
         width: auto;
     }
 
@@ -3673,6 +3628,9 @@ p.userhobby{
   width:140px;
   border-radius:0 0 5px 5px;
   cursor:pointer;
+}
+.home #left-hidden .open-tag{
+	top:575px;
 }
 #left-hidden .widget {
   border-bottom:5px solid #fff;
@@ -4226,4 +4184,40 @@ input.onehundred.reject:checked ~ .progress > .progress-bar{
 a.important_msg {
   display: inline-block;
   margin: 0 0 10px;
+}
+
+/* header widget area */
+#header_widget .widget{
+	display:inline-block;
+	margin:0;
+	min-width:200px;
+	padding:5px 20px;
+	vertical-align:top;
+}
+
+/* brb widget */
+.widget_brb_display table{
+	margin:0 0 10px;
+}
+.widget_brb_display td{
+	padding:0 10px;
+	line-height:22px;
+}
+.widget_brb_display p{
+	margin:0 0 5px;
+}
+
+/* not read message on single post */
+.nonread{
+	font-size:14px;
+	margin:0 0 5px;
+}
+.nonread label{
+	color:#ff0000;
+	font-weight:bold;
+}
+
+/* crs stats widget */
+.widget_crs_display{
+	position:relative;
 }

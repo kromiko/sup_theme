@@ -255,6 +255,16 @@ function twentythirteen_widgets_init() {
 		'before_title'  => '<h3 class="widget-title">',
 		'after_title'   => '</h3>',
 	) );
+	
+	register_sidebar( array(
+		'name'          => __( 'Header Widget Area', 'twentythirteen' ),
+		'id'            => 'header_area',
+		'description'   => __( 'Displays on site header', 'twentythirteen' ),
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
+	) );
 }
 add_action( 'widgets_init', 'twentythirteen_widgets_init' );
 
@@ -699,7 +709,6 @@ add_action('init', 'my_post_type_sup_brainstorm');
 
 //time of day
 function time_of_day($content) {
-   //$pdate = strtotime($content);
    $pdate = strtotime(str_replace("<br />","",$content)); //WP-Admin adds a break tag for display purposes which we have to strip out.
    $hour=date('H',$pdate);
    switch($hour)
@@ -1447,4 +1456,41 @@ function do_update_read_user_meta(){
 		'message' => 'success'
 	);
 	wp_send_json($return);
+}
+
+//extend login cookie lifetime to 1 year
+add_filter( 'auth_cookie_expiration', 'keep_me_logged_in_for_1_year' );
+function keep_me_logged_in_for_1_year(){
+    return 31536000;
+}
+
+//display users from certain usergroup
+function my_group_listing( $group ) {
+    // Get the global $wpdb object
+    global $wpdb;
+
+    // The taxonomy name will be used to get the objects assigned to that group
+    $taxonomy = 'user-group';
+
+    // Use a dBase query to get the ID of the user group
+    $userGroupID = $wpdb->get_var(
+                    $wpdb->prepare("SELECT term_id
+                        FROM {$wpdb->terms} t
+                        WHERE t.name = %s", $group));
+
+    // Now grab the object IDs (aka user IDs) associated with the user-group
+    $userIDs = get_objects_in_term($userGroupID, $taxonomy);
+
+    // Check if any user IDs were returned; if so, display!
+    // If not, notify visitor none were found.
+    if ($userIDs) {
+		$group_users = array();
+        foreach( $userIDs as $userID ) {
+            $user = get_user_by('id', $userID);
+			$group_users[] = $user->display_name;
+        }
+	return $group_users;
+	} else {
+		return;
+	}
 }

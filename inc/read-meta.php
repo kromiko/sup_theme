@@ -24,6 +24,9 @@ function important_meta_box_callback( $post ) {
 	 */
 	$value = get_post_meta( $post->ID, 'important_field', true );
 	$read_users = get_post_meta($post->ID, '_read_users', true);
+	$all_users = my_group_listing('Group 1');
+	$read_users_arr = explode(", ", $read_users);
+	$not_read = array_diff($all_users,$read_users_arr);
 
 	echo '<p><label for="_field">';
 	_e( 'Mark post as must read?', 'support_theme' );
@@ -41,6 +44,16 @@ function important_meta_box_callback( $post ) {
 		_e( 'Already read the post: ', 'support_theme' );
 		echo '</label> ';
 		echo $read_users;
+		echo '</p>';
+	}
+	
+	if ($not_read){
+		echo '<p><label for="_field">';
+		_e( 'Not read the post: ', 'support_theme' );
+		echo '</label> ';
+		foreach ($not_read as $item){
+			echo $item . ', ';
+		}
 		echo '</p>';
 	}
 }
@@ -99,5 +112,26 @@ function important_save_meta_box_data( $post_id ) {
 
 	// Update the meta field in the database.
 	update_post_meta( $post_id, 'important_field', $my_data );
+	
+	//add post author to already read users
+	global $current_user;
+	$uname = $current_user->display_name;
+	$user_id = $current_user->ID;
+	
+	$users_post_meta = get_post_meta($post_id, '_read_users', true);
+	if ($users_post_meta){
+		$meta_value = $users_post_meta . ', ' . $uname;
+		update_post_meta($post_id, '_read_users', $meta_value);
+	} else {
+		update_post_meta($post_id, '_read_users', $uname);
+	}
+	
+	$cur_user_meta = get_user_meta($user_id, '_read_post', true);
+	if ($cur_user_meta){
+		$post_id = $post_id . ', ' . $cur_user_meta;
+		update_user_meta( $user_id, '_read_post', $post_id );
+	} else {
+		update_user_meta( $user_id, '_read_post', $post_id );
+	}
 }
 add_action( 'save_post', 'important_save_meta_box_data' );
