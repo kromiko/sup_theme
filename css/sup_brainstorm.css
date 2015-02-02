@@ -26,3 +26,24 @@
 .hidden_checkbox{
 	visibility:hidden;
 }
+
+/* QAS post styles */
+.post-type-qas .status{
+  margin-left:15px;
+}
+.post-type-qas em.note{
+	margin-left:20px;
+}
+
+.post-type-qas input.status[value="Rejected"], .post-type-qas input.status[value="Approved"]{
+	margin-left:60px;
+}
+.post-type-qas input.status[value="In Progress"], .post-type-qas input.status[value="final_reject"]{
+	margin-left:0;
+}
+.post-type-qas .or{
+	margin:0 10px;
+}
+.post-type-qas input.status[value="Finished"], span.finished{
+	display:none;
+}

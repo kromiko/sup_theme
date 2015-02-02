@@ -6,14 +6,15 @@
 function sup_theme_load_widgets() {
 	$widget_files = array(
 		'WP_Widget_Useful_Links_Categories'    => 'widget-useful_categories.php',
-		'Tickets_RMS' 						   => 'vbwidget.php',
+		//'Tickets_RMS' 						   => 'vbwidget.php',
 		'My_WP_Widget_Recent_Posts'			   => 'pe_news_widget.php',
 		'WP_Widget_WIB_display' 			   => 'widget-wib_display.php',
 		'Work_Duty'							   => 'work_duty_widget.php',
 		'SupportOpenings_Widget'			   => 'sup_openings_widget.php',
 		'WP_Widget_Recent_Brainstorm'		   => 'brainstorming_widget.php',
 		'WP_Widget_BRB_display'				   => 'widget-brb_display.php',
-		'WP_Widget_CRS_display'				   => 'widget-crs_display.php'
+		'WP_Widget_CRS_display'				   => 'widget-crs_display.php',
+		'WP_Widget_Recent_Qas'				   => 'qas_widget.php'
 	);
 	foreach ( $widget_files as $class_name => $file_name ) {
 		$widget_dir = get_template_directory() . '/inc/' . $file_name;

@@ -99,6 +99,7 @@ add_action( 'after_setup_theme', 'twentythirteen_setup' );
 /* custom admin menu */
 require get_template_directory() . '/admin/hobbies_page.php';
 require get_template_directory() . '/admin/rank_page.php';
+require get_template_directory() . '/admin/qas_page.php';
 
 /**
  * Returns the Google font stylesheet URL, if available.
@@ -183,6 +184,7 @@ function twentythirteen_admin_scripts_styles() {
 	wp_enqueue_script('user-raiting', get_template_directory_uri() . '/js/user-raiting.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-datepicker' ));
 	wp_enqueue_style( 'user-raiting', '//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css', array(), '2014-10-31' );
 	wp_enqueue_script('support_brainstorming_post', get_template_directory_uri() . '/js/sup_brainstorm.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-datepicker' ));
+	wp_enqueue_script('qas_post', get_template_directory_uri() . '/js/qas.js', array( 'jquery' ));
 	wp_enqueue_style('support_brainstorming_post', get_template_directory_uri() . '/css/sup_brainstorm.css');
 }
 add_action( 'admin_enqueue_scripts', 'twentythirteen_admin_scripts_styles' );
@@ -548,164 +550,8 @@ add_action( 'customize_preview_init', 'twentythirteen_customize_preview_js' );
 //Shortcodes
 include_once(TEMPLATEPATH . '/inc/shortcodes/pretty_photo.php');
 
-//quick-post custom post type
-function my_post_type_quick_post() {
-	register_post_type( 'quick-post',
-                array( 
-				'label' => __('Quick post'), 
-				'singular_label' => __('Quick post Item', 'support_theme'),
-				'_builtin' => false,
-				'public' => true, 
-				'show_ui' => true,
-				'show_in_nav_menus' => true,
-				'hierarchical' => true,
-				'capability_type' => 'page',
-				'menu_icon' => get_template_directory_uri() . '/images/quick-post.png',
-				'rewrite' => array(
-					'slug' => 'quick-post',
-					'with_front' => FALSE,
-				),
-				'supports' => array(
-						'title',
-						'editor',
-						'thumbnail',
-						'excerpt',
-						'custom-fields',
-						'comments')
-					) 
-				);
-	register_taxonomy('quick_post_category', 'quick_post', array('hierarchical' => true, 'label' => 'Quick post Categories', 'singular_name' => 'Category', "rewrite" => true, "query_var" => true));
-}
-
-add_action('init', 'my_post_type_quick_post');
-
-//useful links custom post type
-function my_post_type_useful_links() {
-	register_post_type( 'useful_links',
-                array( 
-				'label' => __('Useful links'), 
-				'singular_label' => __('Useful links item', 'support_theme'),
-				'_builtin' => false,
-				'capability_type' => 'post',
-				'public' => true,
-				'publicly_queryable' => true, 
-				'show_ui' => true,
-				'show_in_nav_menus' => true,
-				'show_in_menu' => true,
-				'show_in_admin_bar' => true,
-				'hierarchical' => true,
-				'rewrite' => array(
-					'slug' => 'useful-links',
-					'with_front' => FALSE,
-				),
-				'menu_icon' => get_template_directory_uri() . '/images/links-post.png',
-				'supports' => array(
-						'title',
-						'editor',
-						'author',
-						'comments'
-					)
-				) 
-	);
-	register_taxonomy('useful_links_category', 'useful_links', array('hierarchical' => true, 'label' => 'Useful Links Categories', 'singular_name' => 'Useful Links Category', 'rewrite' => true, 'query_var' => true));
-}
-add_action('init', 'my_post_type_useful_links');
-
-//private enterprise news custom post type
-function my_post_type_private_enterprise() {
-	register_post_type( 'private_enterprise',
-                array( 
-				'label' => __('Private Enterprise News'), 
-				'singular_label' => __('Private Enterprise News item', 'support_theme'),
-				'_builtin' => false,
-				'capability_type' => 'post',
-				'public' => true,
-				'publicly_queryable' => true, 
-				'show_ui' => true,
-				'show_in_nav_menus' => true,
-				'show_in_menu' => true,
-				'show_in_admin_bar' => true,
-				'hierarchical' => false,
-				'rewrite' => array(
-					'slug' => 'pe-news',
-					'with_front' => FALSE,
-				),
-				'menu_icon' => get_template_directory_uri() . '/images/pe-post.png',
-				'supports' => array(
-						'title',
-						'editor',
-						'author',
-						'comments'
-					)
-				) 
-	);
-}
-add_action('init', 'my_post_type_private_enterprise');
-
-//support openings custom post type
-function my_post_type_sup_openings() {
-	register_post_type( 'sup_openings',
-                array( 
-				'label' => __('Support openings'), 
-				'singular_label' => __('Support openings item', 'support_theme'),
-				'_builtin' => false,
-				'capability_type' => 'post',
-				'public' => true,
-				'publicly_queryable' => true, 
-				'show_ui' => true,
-				'show_in_nav_menus' => true,
-				'show_in_menu' => true,
-				'show_in_admin_bar' => true,
-				'hierarchical' => true,
-				'rewrite' => array(
-					'slug' => 'sup-opening',
-					'with_front' => FALSE,
-				),
-				'menu_icon' => 'dashicons-megaphone',
-				'supports' => array(
-						'title',
-						'editor',
-						'author',
-						'comments'
-					)
-				) 
-	);
-	register_taxonomy('sup_openings_category', 'sup_openings', array('hierarchical' => true, 'label' => 'Support openings Categories', 'singular_name' => 'Support openings Category', 'rewrite' => true, 'query_var' => true));
-}
-add_action('init', 'my_post_type_sup_openings');
-
-// support brainstorming custom post type
-function my_post_type_sup_brainstorm() {
-	register_post_type( 'sup_brainstorm',
-                array( 
-				'label' => __('Support Brainstorming'), 
-				'singular_label' => __('Support Brainstorming item', 'support_theme'),
-				'_builtin' => false,
-				'capability_type' => 'post',
-				'public' => true,
-				'publicly_queryable' => true, 
-				'show_ui' => true,
-				'show_in_nav_menus' => true,
-				'show_in_menu' => true,
-				'show_in_admin_bar' => true,
-				'hierarchical' => true,
-				'rewrite' => array(
-					'slug' => 'sup-opening',
-					'with_front' => FALSE,
-				),
-				'menu_icon' => 'dashicons-schedule',
-				'supports' => array(
-						'title',
-						'editor',
-						'author',
-						'comments'
-					)
-				) 
-	);
-	register_taxonomy('sup_brainstorm_category', 'sup_brainstorm', array('hierarchical' => true, 'label' => 'Support Brainstorming Categories', 'singular_name' => 'Support Brainstorming Category', 'rewrite' => true, 'query_var' => true));
-}
-add_action('init', 'my_post_type_sup_brainstorm');
-
+//custom posts
+include_once(TEMPLATEPATH . '/posts_init.php');
 
 //time of day
 function time_of_day($content) {
@@ -819,6 +665,9 @@ include_once get_template_directory() . '/inc/support_openings-meta.php';
 
 /* sup_brainstorm post custom meta boxes */
 include_once get_template_directory() . '/inc/sup_brainstorm-meta.php';
+
+/* QAS post custom meta boxes */
+include_once get_template_directory() . '/inc/qas-meta.php';
 
 /* registering widgets */
 include_once get_template_directory() . '/inc/register-widgets.php';
@@ -1493,4 +1342,54 @@ function my_group_listing( $group ) {
 	} else {
 		return;
 	}
+}
+
+/* ajax action for admin QAS - remove template type */
+add_action( 'wp_ajax_rem_template_type', 'do_rem_template_type' );
+
+function do_rem_template_type(){
+	$templ_key = $_POST['templ_key'];
+	if ($templ_key){
+		$get_templatetypes = get_option('_template_type');
+		unset($get_templatetypes[$templ_key]);
+		if (update_option( '_template_type', $get_templatetypes )){
+			$return = array(
+				'message_template' => 'Template type has been removed'
+			);
+		} else {
+			$return = array(
+				'message_template' => 'Template type has not been removed'
+			);
+		}
+	} else {
+		$return = array(
+			'message_template' => 'Some shit has happened!'
+		);
+	}
+	wp_send_json($return);
+}
+
+/* ajax action for admin QAS - remove problem type */
+add_action( 'wp_ajax_rem_problem_type', 'do_rem_problem_type' );
+
+function do_rem_problem_type(){
+	$problem_key = $_POST['problem_key'];
+	if ($problem_key){
+		$get_problemtypes = get_option('_problem_type');
+		unset($get_problemtypes[$problem_key]);
+		if (update_option( '_problem_type', $get_problemtypes )){
+			$return = array(
+				'message_problem' => 'Problem type has been removed'
+			);
+		} else {
+			$return = array(
+				'message_template' => 'Problem type has not been removed'
+			);
+		}
+	} else {
+		$return = array(
+			'message_template' => 'Some shit has happened!'
+		);
+	}
+	wp_send_json($return);
 }

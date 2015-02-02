@@ -3993,6 +3993,20 @@ p.userhobby{
 .type-sup_openings {
   border-bottom: 1px dashed;
 }
+.new_items:before{
+  background:#ff0000;
+  color:#fff;
+  content:"NEW";
+  font-family:Tahoma;
+  font-size:10px;
+  font-style:normal;
+  font-weight:bold;
+  left:60%;
+  padding:0 3px;
+  position:absolute;
+  top:95px;
+  z-index:100;
+}
 
 /* progress bar */
 .pb_container {
@@ -4220,4 +4234,9 @@ a.important_msg {
 /* crs stats widget */
 .widget_crs_display{
 	position:relative;
+}
+
+/* QAS page styles */
+.type-qas .entry-header .entry-meta{
+	line-height:45px;
 }

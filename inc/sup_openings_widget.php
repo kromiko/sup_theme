@@ -48,25 +48,27 @@ class SupportOpenings_Widget extends WP_Widget {
 		 * @param array $args An array of arguments used to retrieve the recent posts.
 		 */
 		$r = new WP_Query( apply_filters( 'widget_posts_args', array(
-			'posts_per_page'      => $number,
+			'posts_per_page'      => 1,
 			'post_type'			  => 'sup_openings',
 			'no_found_rows'       => true,
 			'post_status'         => 'publish',
-			'orderby' 			  => 'modified',
+			'orderby' 			  => 'date',
 			'order'				  => 'DESC',
-			'ignore_sticky_posts' => true
+			'ignore_sticky_posts' => true,
 		) ) );
 
 		if ($r->have_posts()) :
 		
 			$r->the_post();
-			$latest_date = get_the_modified_date();
+			$latest_date = get_the_date();
 			$cur_date = new DateTime(date("d.m.Y"));
 			$time_diff = $cur_date->diff(new DateTime($latest_date));
-
+			if ($time_diff->days < 7){
+				$class = 'class="new_items"';
+			}
 			echo $args['before_widget'];
 			if ( $title ) {
-				echo $args['before_title'] . '<a href="' . $url . '"><div class="cloth"></div><img class="sup_open_ico" src="' . get_template_directory_uri() . '/images/hire_me_ico.jpg" width="68" height="80" alt="' . $title . '" /><span>' . $title . '</span></a>' . $args['after_title'];
+				echo $args['before_title'] . '<a ' . $class . ' href="' . $url . '"><div class="cloth"></div><img class="sup_open_ico" src="' . get_template_directory_uri() . '/images/hire_me_ico.jpg" width="68" height="80" alt="' . $title . '" /><span>' . $title . '</span></a>' . $args['after_title'];
 			} else {
 				echo $args['before_title'] . '<a href="' . $url . '"></a>' . $args['after_title'];
 			}

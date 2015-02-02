@@ -26,6 +26,7 @@ get_header(); ?>
 						if ($shift){
 							asort($shift);
 						}
+						$birthday = get_user_meta($current_user->ID, '_birthday', true);
 					?>
 					<div id="service_message"></div>
 					<div id="error_message"></div>
@@ -40,6 +41,7 @@ get_header(); ?>
 							<ul>
 								<li><a href="#tabs-1"><?php echo __( 'User account options', 'twentythirteen' ); ?></a></li>
 								<li><a href="#tabs-2"><?php echo __( 'User custom options', 'twentythirteen' ); ?></a></li>
+								<li><a href="#tabs-3"><?php echo __( 'User personal options', 'twentythirteen' ); ?></a></li>
 							</ul>
 							
 							<div id="tabs-1">
@@ -117,6 +119,24 @@ get_header(); ?>
 										<input type="submit" id="add-hobbies" name="add-hobbies" value="Add hobbies" />
 									</div>
 							</div>
+							<div id="tabs-3">
+								<p><label for="birthday"><?php echo __( 'Birthday Date', 'twentythirteen' ); ?></label>
+								<input type="text" name="birthday" id="birthday" value="<?php echo $birthday; ?>" /></p>
+								<p><label for="birthplace"><?php echo __( 'Birthplace', 'twentythirteen' ); ?></label>
+								<input type="text" name="birthplace" id="birthplace" value="<?php echo $birthplace; ?>" /></p>
+								<p><label for="height"><?php echo __( 'Height', 'twentythirteen' ); ?></label>
+								<input type="text" name="height" id="height" value="<?php echo $height; ?>" /></p>
+								<p><label for="foot_size"><?php echo __( 'Foot Size', 'twentythirteen' ); ?></label>
+								<input type="text" name="foot_size" id="foot_size" value="<?php echo $foot_size; ?>" /></p>
+								<p><label for="eye_color"><?php echo __( 'Eye Color', 'twentythirteen' ); ?></label>
+								<input type="text" name="eye_color" id="eye_color" value="<?php echo $eye_color; ?>" /></p>
+								<p><label for="hair_color"><?php echo __( 'Hair Color', 'twentythirteen' ); ?></label>
+								<input type="text" name="hair_color" id="hair_color" value="<?php echo $hair_color; ?>" /></p>
+								<p><label for="education"><?php echo __( 'Education', 'twentythirteen' ); ?></label>
+								<input type="text" name="education" id="education" value="<?php echo $education; ?>" /></p>
+								<p><label for="languages"><?php echo __( 'Languages', 'twentythirteen' ); ?></label>
+								<input type="text" name="languages" id="languages" value="<?php echo $languages; ?>" /></p>
+							<div>
 						</div>
                     </form>
     
